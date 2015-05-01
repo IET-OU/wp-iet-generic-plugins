@@ -1,0 +1,30 @@
+{
+  "name": "iet-ou/wp-iet-generic-plugins",
+  "description": "Collection of generic WordPress plugins: tagcloud & wp_query shortcodes, 'Simple Embed', etc. Developed for the JuxtaLearn and LACE projects. ©2015 The Open University, UK.",
+  "keywords": [ "WordPress", "LACE", "OpenUniversity", "IET-OU" ],
+  "homepage": "http://evidence.laceproject.eu",
+  "license": "GPL-2.0+",
+  "type": "wordpress-plugin",
+  "time": "2013-10-04",
+  "minimum-stability": "dev",
+  "authors": [
+    { "name": "Nick Freear (@nfreear)", "homepage": "http://iet.open.ac.uk" }
+  ],
+  "support": {
+    "email": "iet-webmaster@open.ac.uk",
+    "source": "https://github.com/IET-OU/wp-iet-generic-plugins"
+  },
+  "require": {
+    "php": ">=5.3.3",
+    "composer/installers": "~1.0"
+  },
+  "extra": {
+
+    "//": [
+      "https://dl.dropbox.com/u/3203144/lace/lace-composer-proposal-2015.md",
+      "https://github.com/IET-OU/oer-evidence-hub-org",
+      "https://roots.io/using-composer-with-wordpress/"
+    ]
+  }
+}
+
