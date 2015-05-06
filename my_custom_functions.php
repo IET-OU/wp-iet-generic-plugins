@@ -34,7 +34,7 @@ class IET_Custom_Functions {
 
 
   public function __construct() {
-    self::$host = self::get_option( 'iet_custom_style_hostname', $_SERVER[ 'HTTP_HOST' ]);
+    self::$host = self::get_option( 'iet_custom_style_hostname', filter_input( INPUT_SERVER, 'HTTP_HOST' ));
 
     add_filter('admin_body_class', array(&$this, 'admin_body_class'));
     $this->add_action( 'admin_enqueue_scripts', 'admin_enqueue_scripts' );
@@ -188,7 +188,7 @@ class IET_Custom_Functions {
   }
 
   public static function is_test_site() {
-    return preg_match( self::TEST_SERVER_REGEX, $_SERVER[ 'HTTP_HOST' ]);
+    return preg_match( self::TEST_SERVER_REGEX, filter_input( INPUT_SERVER, 'HTTP_HOST' ));
   }
 
   public static function is_juxtalearn() {

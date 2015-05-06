@@ -21,7 +21,7 @@ class IET_Custom_Style_Plugin {
   protected $host;
 
   public function __construct() {
-    $this->host = self::get_option( 'iet_custom_style_hostname', $_SERVER[ 'HTTP_HOST' ]);
+    $this->host = self::get_option( 'iet_custom_style_hostname', filter_input( INPUT_SERVER, 'HTTP_HOST' ));
 
     if ($this->is_juxtalearn()) {
       #$this->add_action( 'admin_enqueue_scripts', .. );

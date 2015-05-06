@@ -3,7 +3,7 @@
 A collection of generic WordPress plugins, including:
 
 * ` [tagcloud] ` shortcode
-<!-- * ` [wp_query] ` shortcode -->
+* ` [wp_query] ` shortcode
 * Simple Embed
 * Simple Menu
 * IET attribution
@@ -22,7 +22,7 @@ License: [GNU GPL 2 onwards][gpl]
 © 2015 The Open University. ([Institute of Educational Technology][])
 
 
-[gpl]: http://gnu.org/licenses/gpl-2.0.html
+[gpl]: http://gnu.org/licenses/gpl-2.0.html "GPL-2.0+"
 [Using Composer with WordPress]: https://roots.io/using-composer-with-wordpress/
 [Composer]: https://getcomposer.org/
 [parent]: https://github.com/IET-OU/oer-evidence-hub-org
