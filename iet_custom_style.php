@@ -13,7 +13,7 @@ Version:     0.2
 * @link https://github.com/IET-OU/oer-evidence-hub-org/blob/juxtalearn/custom-functions/my_custom_functions.php#L57
 * @copyright Nick Freear, 30 September 2014.
 */
-define('IET_CUSTOM_STYLE_REGISTER_FILE', preg_replace('@\/var\/www\/[^\/]+@', '', __FILE__));
+define( 'IET_CUSTOM_STYLE_REGISTER_FILE', __FILE__  );  #preg_replace('@^.*wp-content\/plugins@', '', __FILE__));
 
 
 class IET_Custom_Style_Plugin {

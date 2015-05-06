@@ -28,7 +28,7 @@ License: GPL2+
 * @copyright Nick Freear, 25 September 2014.
 */
 
-define('IET_ATTRIBUTION_REGISTER_FILE', preg_replace('@\/var\/www\/[^\/]+@', '', __FILE__));
+define( 'IET_ATTRIBUTION_REGISTER_FILE', __FILE__ );  #preg_replace( '@^.*wp-content\/plugins@', '', __FILE__ ));
 
 
 
