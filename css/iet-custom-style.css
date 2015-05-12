@@ -225,7 +225,7 @@ button.jxl-print {
 }
 
 
-/* Slick Quiz print CSS.
+/* Slick Quiz print CSS [JuxtaLearn]
 */
 @media print {
 
@@ -237,7 +237,16 @@ button.jxl-print {
   .slickQuizWrapper .questionCount {
     display: none !important;
   }
+}
 
+
+/* Cookie Notice plugin print CSS [LACE]+ [Bug: #3]
+*/
+@media print {
+
+  body > div#cookie-notice[class] {
+    display: none !important;
+  }
 }
 
 
