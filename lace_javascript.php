@@ -28,11 +28,14 @@ jQuery(function ($) {
   var
     is_private_page =
       document.location.href.match(/(page_id=114|contribute\/evidence-form)/),
-    is_not_found = $(".error404").length > 0,
+    $not_found = $(".error404, .not-found"),
+    $not_found_p = $not_found.find("p").first(),
+    is_not_found = $not_found.length > 0,
     $private_link =
       $("article a[href *= 'page_id=114'], article a[href *= evidence-form]"),
     icon_lock =
     '<span class="icon-webfont el-icon-lock"></span><span class="icon-webfont el-icon-user"></span>',
+    referrer = document.referrer,
     W = window;
 
   $private_link.append(icon_lock).attr("title", "Login required");  
@@ -48,8 +51,21 @@ jQuery(function ($) {
 
     W.console && console.log("lace_js - Actual error: 401 Unauthorized");
   }
+  else if (is_not_found) {  // [Bug: #4]
+    W.console && console.log("History", window.history);
 
-  //W.console && console.log("lace_js", is_not_found, is_private_page);
+    if (referrer && referrer !== W.location) {
+      $not_found_p.before(
+        "<button type='button' onclick='history.back(-1)'>← Back</button>");
+
+      W.console && console.log("Referrer:", referrer.split("/")[2]);
+    }
+
+    $not_found_p.text(
+      $not_found_p.text().replace(/find a related post/, "find a related page"));
+  }
+
+  W.console && console.log("lace_js", is_not_found, is_private_page, referrer);
 });
 </script>
 

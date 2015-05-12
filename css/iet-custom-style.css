@@ -250,4 +250,17 @@ button.jxl-print {
 }
 
 
+/* Error page [LACE]+ [Bug: #4]
+*/
+.not-found header {
+  margin: .9em 0;
+}
+
+.not-found button[onclick *= 'history'] {
+  font-size: 1.2em;
+  padding: 4px 15px;
+  margin: .8em 0;
+}
+
+
 /*End. */
