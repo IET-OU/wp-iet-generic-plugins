@@ -263,4 +263,15 @@ button.jxl-print {
 }
 
 
+/* Facetious search widget [LACE]
+*/
+.evidence-laceproject-eu .facetious_post_type [value=post],
+.evidence-laceproject-eu .facetious_post_type [value=page],
+.evidence-laceproject-eu .facetious_post_type [value=attachment],
+.evidence-laceproject-eu .facetious_post_type [value=suggestion],
+.evidence-laceproject-eu .facetious_post_type [value=location] {
+  display: none;
+}
+
+
 /*End. */

@@ -17,10 +17,7 @@ if (basename($_SERVER[ 'PHP_SELF' ]) == basename( __FILE__ )) {
 }
 
 
-define( 'IET_CUSTOM_FUNC_REGISTER_FILE',
-  preg_replace( '@/Users/[^\/]+/[^\/]+/[^\/]+@', '',    # Mac OS X
-    preg_replace( '@\/var\/www\/[^\/]+@', '', __FILE__) # Linux
-));
+define( 'IET_CUSTOM_FUNC_REGISTER_FILE', __FILE__ );
 
 //http://wordpress.org/support/topic/stop-wordpress-from-adding-p-tags-and-removing-line-break
 //remove_filter ('the_content', 'wpautop');
