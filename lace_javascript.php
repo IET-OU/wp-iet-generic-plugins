@@ -77,6 +77,10 @@ jQuery(function ($) {
   /** qTip JS for `text-hover` WP plugin - fix UI [LACE]+ [Bug: #5]
   */
   public function text_hover_qtip_javascript() {
+    if (!class_exists( 'c2c_TextHover' )):
+      ?><!--lace-js plugin: c2c_TextHover not found.--><?php
+      return;
+    endif;
 
     $th_opts = (object) get_option( 'c2c_text_hover' );
 
@@ -85,14 +89,13 @@ jQuery(function ($) {
     }
 
     $th_assets_url = plugins_url( 'text-hover' ) . '/assets/';
-
     ?>
 <link rel=stylesheet href="<?php echo $th_assets_url ?>jquery.qtip.min.css" />
 <script src="<?php echo $th_assets_url ?>jquery.qtip.min.js"></script>
 <script id="lace-js-text-hover" >
 jQuery(function ($) {
 
-  $( 'acronym.c2c-text-hover[title!=""]' ).qtip({
+  $.fn.qtip && $( 'acronym.c2c-text-hover[title!=""]' ).qtip({
 	style: { classes: 'x-text-hover-qtip qtip-bootstrap' },
 	show: { solo: true, modal: false },
 	hide: {
@@ -101,6 +104,7 @@ jQuery(function ($) {
 	}
   });
 
+  //console.log($.fn.qtip);
   //var text_hover_opts = <?php #echo json_encode( $th_opts ) ?>;
 });
 </script>
