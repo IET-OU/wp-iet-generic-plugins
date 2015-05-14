@@ -16,6 +16,7 @@ class Lace_Javascript_Plugin {
 
   public function __construct() {
     add_action( 'wp_footer', array( &$this, 'wp_footer_javascript' ));
+    add_action( 'wp_footer', array( &$this, 'text_hover_qtip_javascript' ));
   }
 
   /** Javascript to fix the "Not found" message for evidence form [Bug: #27].
@@ -66,6 +67,41 @@ jQuery(function ($) {
   }
 
   W.console && console.log("lace_js", is_not_found, is_private_page, referrer);
+});
+</script>
+
+<?php
+  }
+
+
+  /** qTip JS for `text-hover` WP plugin - fix UI [LACE]+ [Bug: #5]
+  */
+  public function text_hover_qtip_javascript() {
+
+    $th_opts = (object) get_option( 'c2c_text_hover' );
+
+    if (isset( $th_opts->use_pretty_tooltips ) && $th_opts->use_pretty_tooltips) {
+      return;
+    }
+
+    $th_assets_url = plugins_url( 'text-hover' ) . '/assets/';
+
+    ?>
+<link rel=stylesheet href="<?php echo $th_assets_url ?>jquery.qtip.min.css" />
+<script src="<?php echo $th_assets_url ?>jquery.qtip.min.js"></script>
+<script id="lace-js-text-hover" >
+jQuery(function ($) {
+
+  $( 'acronym.c2c-text-hover[title!=""]' ).qtip({
+	style: { classes: 'x-text-hover-qtip qtip-bootstrap' },
+	show: { solo: true, modal: false },
+	hide: {
+	  delay: 3000  // Milliseconds.
+	  //distance: 20  // Pixels.
+	}
+  });
+
+  //var text_hover_opts = <?php #echo json_encode( $th_opts ) ?>;
 });
 </script>
 

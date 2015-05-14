@@ -263,7 +263,7 @@ button.jxl-print {
 }
 
 
-/* Facetious search widget [LACE]
+/* Facetious search widget [LACE] [Bug: #2]
 */
 .evidence-laceproject-eu .facetious_post_type [value=post],
 .evidence-laceproject-eu .facetious_post_type [value=page],
@@ -271,6 +271,33 @@ button.jxl-print {
 .evidence-laceproject-eu .facetious_post_type [value=suggestion],
 .evidence-laceproject-eu .facetious_post_type [value=location] {
   display: none;
+}
+
+
+/* Text hover WP plugin/ qTip style [LACE] [Bug: #5]
+*/
+body /*text-hover*/ .qtip.qtip-default {
+  font-size: .95em;
+  line-height: 1.25em;
+  border: 1px solid #bba;
+  border-radius: 4px;
+  padding: 5px 0;
+  background-color: #fefffc;
+  color: #222;
+}
+.widget-area acronym, footer acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+
+/* Information/ warning/ off-line message [LACE]+
+*/
+.widget-area .widget .jxl-message p {
+  color: #c60; font-size: 1.1em; margin: .8em 0; line-height: 1.4em;
+}
+.jxl-message {
+  border: 1px solid #bba; padding: 0 8px; background: #fefffc; border-radius: 4px;
 }
 
 
