@@ -303,4 +303,10 @@ body /*text-hover*/ .qtip.qtip-default {
 }
 
 
+
+.evidence-laceproject-eu .leaflet-control .eh_evidence_hub_type {
+  display: none;
+}
+
+
 /*End. */
