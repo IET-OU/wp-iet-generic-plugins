@@ -309,4 +309,17 @@ body /*text-hover*/ .qtip.qtip-default {
 }
 
 
+
+/* CleanPrint [LACE]
+*/
+@media print {
+  .x-cleanprint-buttons {
+    display: none;
+  }
+}
+.x-cleanprint-diagram-warn {
+  display: none;
+}
+
+
 /*End. */
