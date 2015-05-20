@@ -57,6 +57,13 @@ class IET_Custom_Functions {
 
   public function body_class( $classes ) {
 
+    // Banner-logo [LACE][Bug: #10]
+    if (is_array( $classes )) {
+      $classes[] = 'theme-' . strtolower(str_replace( ' ', '-', get_current_theme() ));
+
+      $classes[] = 'header-text-' . ( display_header_text() ? 'yes' : 'no' );
+    }
+
     if (self::is_debug()) {
       if (is_array( $classes )) {
         $classes[] = 'debug';

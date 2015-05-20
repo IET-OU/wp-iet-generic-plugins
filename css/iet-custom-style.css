@@ -293,13 +293,24 @@ body /*text-hover*/ .qtip.qtip-default {
 }
 
 
-/* Information/ warning/ off-line message [LACE]+
+/* Information/ warning/ off-line/ maintenance message [LACE]+
 */
 .widget-area .widget .jxl-message p {
   color: #c60; font-size: 1.1em; margin: .8em 0; line-height: 1.4em;
 }
 .jxl-message {
   border: 1px solid #bba; padding: 0 8px; background: #fefffc; border-radius: 4px;
+}
+
+
+/* Banner-logo [LACE]
+*/
+.evidence-laceproject-eu .header-text-no #site-logo {
+  margin: 0;
+}
+/*.X--*/ .evidence-laceproject-eu .theme-tiny-forge #site-logo img[src *= '-banner-'] {
+  display: block;
+  margin-left: 20px;
 }
 
 
