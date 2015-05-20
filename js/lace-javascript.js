@@ -1,13 +1,13 @@
 /*!
-  Various Javascript fixes/hacks for LACE.
+  Various Javascript fixes/hacks for LACE (inc. CleanPrint customizations)
 */
 
 jQuery(function ($) {
 
   var C = window.console
-    , $inject_cleanprint = $("body.search-results, body.single-hypothesis")
+    , $inject_cleanprint = $("body") //.search-results, body.single-hypothesis")
     , clearprint_post_re = /(search-results|postid-\d+)/
-    , cleanprint_exclude_sel = "#cookie-notice, .nav-menu, .assistive-text, .jxl-message, .oer-chart-loading, .leaflet-control-container, #X-secondary"
+    , cleanprint_exclude_sel = "#cookie-notice, .nav-menu, .assistive-text, .jxl-message, .oer-chart-loading, .leaflet-control-container, .hyp-tpl-hint"
     , cleanprint_include_sel = ".page-title, .entry-title, #X-primary"
     , vis_table_row_sel = ".hypothesis #country-vis-table tbody tr";
 
@@ -43,10 +43,10 @@ jQuery(function ($) {
   */
   if ($inject_cleanprint.length) {
     var post_id = $("body").attr("class").match(clearprint_post_re);
-    post_id = post_id && post_id[1];
+    post_id = (post_id && post_id[1]) || "custom";
 
-    $(".page-header, .entry-header:first").first().after(
-    '<div style="text-align:right;"><a href="." onClick=\"WpCpCleanPrintPrintHtml(\'%s\');return false" title="Print page" class="cleanprint-exclude"><img src="/wp-content/plugins/cleanprint-lt/images/CleanPrintBtn_white.png" alt="Print page"/></a></div>'.replace("%s", post_id || 'custom'));
+    $(".page-title, .entry-title").first().append(
+    '<div class="lace-cleanprint-buttons"><a href="." onclick="WpCpCleanPrintPrintHtml(\'%s\');return false" title="Print page" class="cleanprint-exclude"><img src="/wp-content/plugins/cleanprint-lt/images/CleanPrintBtn_white.png" alt="Print page"/></a></div>'.replace("%s", post_id));
 
     C && console.log("Inject CleanPrint:", $inject_cleanprint);
   }
@@ -57,13 +57,23 @@ jQuery(function ($) {
   $(".oer-chart-loading").first().after(
     "<p class='x-cleanprint-diagram-warn cleanprint-include'>[ Diagrams/ maps may not print or export well. Sorry! ]</p>");
 
-  $cleanprint_bn_wrap = $("a[ onclick ^= WpCpCleanPrint ]").parent();
-  $cleanprint_bn_wrap.addClass("x-cleanprint-buttons");
+  $cleanprint_bn_wrap = $(".lace-cleanprint-buttons");  //$("a[ onclick ^= WpCpCleanPrint ]").parent();
   $cleanprint_bn_wrap.find("a[onclick]").attr("role", "button");
 
   $("a[ onclick ^= WpCpCleanPrintPrint ]").attr("title",
-    "Print/export page to rich-text, PDF & other options");
+    "Print/export page to rich-text, PDF & other formats");
 
+
+  // Accessibility.
+  $cleanprint_bn_wrap.find("a").on("click", function (ev) {
+    setTimeout(function () {
+      $("#cpf-closeButton").attr({
+        role: "button", tabindex: 0, title: "Close CleanPrint", "aria-label": "Close CleanPrint"
+        }).focus();
+
+      $("#cpf-root").attr({ role: "dialog", "aria-label": "CleanPrint" });
+    }, 4000);
+  });
 
 
   function when_call(when_true_FN, callback_FN, interval) {

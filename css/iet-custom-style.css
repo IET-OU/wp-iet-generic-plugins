@@ -1,6 +1,10 @@
 /* IET_Custom_Style_Plugin.
 */
 
+:focus /*, a:hover*/ {
+  outline: 1px dotted #333 !important;
+}
+
 .X-test-site .site-header h1 a {
   color: orange;
 }
@@ -314,7 +318,6 @@ body /*text-hover*/ .qtip.qtip-default {
 }
 
 
-
 .evidence-laceproject-eu .leaflet-control .eh_evidence_hub_type {
   display: none;
 }
@@ -324,10 +327,12 @@ body /*text-hover*/ .qtip.qtip-default {
 /* CleanPrint [LACE]
 */
 @media print {
+  .lace-cleanprint-buttons,
   .x-cleanprint-buttons {
     display: none;
   }
 }
+.lace-cleanprint-diagram-warn,
 .x-cleanprint-diagram-warn {
   display: none;
 }
