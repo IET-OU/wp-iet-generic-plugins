@@ -4,7 +4,9 @@
 
 jQuery(function ($) {
 
-  var C = window.console
+  var W = window
+    , C = W.console
+    , has_cleanprint = W.WpCpCleanPrintPrintHtml || W.CleanPrintHtml
     , $inject_cleanprint = $("body") //.search-results, body.single-hypothesis")
     , clearprint_post_re = /(search-results|postid-\d+)/
     , cleanprint_exclude_sel = "#cookie-notice, .nav-menu, .assistive-text, .jxl-message, .oer-chart-loading, .leaflet-control-container, .hyp-tpl-hint"
@@ -41,6 +43,9 @@ jQuery(function ($) {
 
   /* CleanPrint customizations [Bug: #9]
   */
+  C && console.log("CleanPrint?", has_cleanprint);
+  if (has_cleanprint) {
+
   if ($inject_cleanprint.length) {
     var post_id = $("body").attr("class").match(clearprint_post_re);
     post_id = (post_id && post_id[1]) || "custom";
@@ -74,6 +79,8 @@ jQuery(function ($) {
       $("#cpf-root").attr({ role: "dialog", "aria-label": "CleanPrint" });
     }, 4000);
   });
+
+  }
 
 
   function when_call(when_true_FN, callback_FN, interval) {

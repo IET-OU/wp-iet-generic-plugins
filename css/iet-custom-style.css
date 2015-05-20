@@ -327,14 +327,16 @@ body /*text-hover*/ .qtip.qtip-default {
 /* CleanPrint [LACE]
 */
 @media print {
-  .lace-cleanprint-buttons,
-  .x-cleanprint-buttons {
+  .lace-cleanprint-buttons {
     display: none;
   }
 }
-.lace-cleanprint-diagram-warn,
-.x-cleanprint-diagram-warn {
+.lace-cleanprint-diagram-warn {
   display: none;
+}
+.lace-cleanprint-buttons {
+  display: inline-block;
+  float: right;
 }
 
 
