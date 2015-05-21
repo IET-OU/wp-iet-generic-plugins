@@ -41,6 +41,13 @@ jQuery(function ($) {
   });
 
 
+  // Evidence map attribution hack.
+  var $map_icon = $(".lace-map-icon");
+  if ($map_icon.length) {
+    $(".leaflet-bottom.leaflet-left").append($map_icon[0].outerHTML);
+  }
+
+
   /* CleanPrint customizations [Bug: #9]
   */
   C && console.log("CleanPrint?", has_cleanprint);
@@ -60,7 +67,7 @@ jQuery(function ($) {
   $(cleanprint_include_sel).addClass("cleanprint-include");
 
   $(".oer-chart-loading").first().after(
-    "<p class='lace-cleanprint-diagram-warn cleanprint-include'>[ Diagrams/ maps may not print or export well. Sorry! ]</p>");
+    "<p class='lace-cleanprint-diagram-warn cleanprint-include'>[ Diagrams and maps may not print or export well. Sorry! ]</p>");
 
   $cleanprint_bn_wrap = $(".lace-cleanprint-buttons");  //$("a[ onclick ^= WpCpCleanPrint ]").parent();
   $cleanprint_bn_wrap.find("a[onclick]").attr("role", "button");
