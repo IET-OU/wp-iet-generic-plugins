@@ -60,7 +60,7 @@ jQuery(function ($) {
   $(cleanprint_include_sel).addClass("cleanprint-include");
 
   $(".oer-chart-loading").first().after(
-    "<p class='x-cleanprint-diagram-warn cleanprint-include'>[ Diagrams/ maps may not print or export well. Sorry! ]</p>");
+    "<p class='lace-cleanprint-diagram-warn cleanprint-include'>[ Diagrams/ maps may not print or export well. Sorry! ]</p>");
 
   $cleanprint_bn_wrap = $(".lace-cleanprint-buttons");  //$("a[ onclick ^= WpCpCleanPrint ]").parent();
   $cleanprint_bn_wrap.find("a[onclick]").attr("role", "button");
