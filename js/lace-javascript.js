@@ -69,16 +69,43 @@ jQuery(function ($) {
     "Print/export page to rich-text, PDF & other formats");
 
 
-  // Accessibility.
-  $cleanprint_bn_wrap.find("a").on("click", function (ev) {
-    setTimeout(function () {
-      $("#cpf-closeButton").attr({
-        role: "button", tabindex: 0, title: "Close CleanPrint", "aria-label": "Close CleanPrint"
-        }).focus();
+    /* CleanPrint - keyboard accessibility hacks (incomplete!) (uses WAI-ARIA)
+    */
+    $cleanprint_bn_wrap.find("a").on("click", function (ev) {
 
-      $("#cpf-root").attr({ role: "dialog", "aria-label": "CleanPrint" });
-    }, 4000);
-  });
+      var $cleanprint_return = $(".lace-cleanprint-buttons a").first();
+
+      setTimeout(function () {
+
+        // 1. Make the 'close' pseudo-button into a functional button.
+        $("#cpf-closeButton").attr({
+          role: "button",
+          tabindex: 0,
+          title: "Close CleanPrint",
+          "aria-label": "Close CleanPrint"
+        })
+        // 2. Start keyboard focus in a sensible place.
+        .focus()
+        // 3. Return keyboard focus when the user closes the CleanPrint dialog (by any means...)
+        .on("click cleanprint_close", function () {
+          $cleanprint_return.focus();
+        });
+
+        // 4. Let users know this is a modal dialog (needs more work).
+        $("#cpf-root").attr({
+          role: "dialog",
+          "aria-label": "CleanPrint"
+        });
+
+        /* 5. Todo: prevent keyboard navigation outside the modal dialog, while its open.
+           6. Todo: make all the pseudo-buttons inside the CleanPrint <iframe> into functional buttons.
+           7. Todo: visual indication of keyboard focus in dialog - CSS - *:focus { outline: 1px dotted gray; }
+
+        ... Test and iterate ..! */
+
+      }, 4000);
+
+    });
 
   }
 

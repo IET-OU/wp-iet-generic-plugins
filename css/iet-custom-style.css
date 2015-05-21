@@ -1,9 +1,13 @@
 /* IET_Custom_Style_Plugin.
 */
 
+
+/* Keyboard accessibility.
+*/
 :focus /*, a:hover*/ {
   outline: 1px dotted #333 !important;
 }
+
 
 .X-test-site .site-header h1 a {
   color: orange;
