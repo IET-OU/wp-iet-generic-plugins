@@ -48,6 +48,20 @@ jQuery(function ($) {
   }
 
 
+  // LACE banner [Bug: #10]
+  var logo_sel = "#site-logo-image"
+    , banner_path = "/wp-content/plugins/wp-iet-generic-plugins/images/lace/lace"
+    , banner_alt = "Evidence Hub - learning analytics community exchange (LACE)"
+    , with_banner = $(".lace-with-banner").length;
+
+  if (with_banner) {
+    $(logo_sel).after(
+    "<img class='lace-bnr left' alt='%t' src='%s_evidence-hub-banner.png'><img class='lace-bnr right' alt='' src='%s_lace-banner.png'>"
+    .replace(/%s/g, banner_path).replace(/%t/, banner_alt)
+    );
+  }
+
+
   /* CleanPrint customizations [Bug: #9]
   */
   C && console.log("CleanPrint?", has_cleanprint);
@@ -58,7 +72,17 @@ jQuery(function ($) {
     post_id = (post_id && post_id[1]) || "custom";
 
     $(".page-title, .entry-title").first().append(
-    '<div class="lace-cleanprint-buttons"><a href="." onclick="WpCpCleanPrintPrintHtml(\'%s\');return false" title="Print page" class="cleanprint-exclude"><img src="/wp-content/plugins/cleanprint-lt/images/CleanPrintBtn_white.png" alt="Print page"/></a></div>'.replace("%s", post_id));
+    '<div class="lace-cleanprint-buttons"><button onclick="WpCpCleanPrintPrintHtml(\'%s\');return false" class="cleanprint-exclude">Export</button></div>'
+      .replace("%s", post_id));
+
+    $.fn.qtip && $(".lace-cleanprint-buttons button").qtip({
+      content: 'Print/export page to rich-text, PDF & other formats <img src="/wp-content/plugins/cleanprint-lt/images/CleanPrintBtn_white.png">',
+      style: { classes: 'lace-cleanprint-qtip qtip-bootstrap' },
+      show: { solo: true },
+      hide: {
+	    delay: 2500
+	  }
+    });
 
     C && console.log("Inject CleanPrint:", $inject_cleanprint);
   }
@@ -69,20 +93,22 @@ jQuery(function ($) {
   $(".oer-chart-loading").first().after(
     "<p class='lace-cleanprint-diagram-warn cleanprint-include'>[ Diagrams and maps may not print or export well. Sorry! ]</p>");
 
-  $cleanprint_bn_wrap = $(".lace-cleanprint-buttons");  //$("a[ onclick ^= WpCpCleanPrint ]").parent();
+  var $cleanprint_bn_wrap = $(".lace-cleanprint-buttons");  //$("a[ onclick ^= WpCpCleanPrint ]").parent();
   $cleanprint_bn_wrap.find("a[onclick]").attr("role", "button");
 
-  $("a[ onclick ^= WpCpCleanPrintPrint ]").attr("title",
+  $(".XX--a[ onclick ^= WpCpCleanPrintPrint ]").attr("title",
     "Print/export page to rich-text, PDF & other formats");
 
 
     /* CleanPrint - keyboard accessibility hacks (incomplete!) (uses WAI-ARIA)
     */
-    $cleanprint_bn_wrap.find("a").on("click", function (ev) {
+    $cleanprint_bn_wrap.find("a, button").on("click", function (ev) {
 
-      var $cleanprint_return = $(".lace-cleanprint-buttons a").first();
+      var $cleanprint_return = $(".lace-cleanprint-buttons a, .lace-cleanprint-buttons button").first();
 
-      setTimeout(function () {
+      when_call(function () {
+        return $("#cpf-closeButton").length
+      }, function () {
 
         // 1. Make the 'close' pseudo-button into a functional button.
         $("#cpf-closeButton").attr({
@@ -110,7 +136,7 @@ jQuery(function ($) {
 
         ... Test and iterate ..! */
 
-      }, 4000);
+      });
 
     });
 
@@ -123,7 +149,7 @@ jQuery(function ($) {
         clearInterval(int_id);
         callback_FN();
       }
-    }, interval || 200); // Milliseconds.
+    }, interval || 300); // Milliseconds.
   }
 
   C && console.log('lace-javascript.js');
