@@ -322,17 +322,6 @@ body /*text-hover*/ .qtip.qtip-default {
 }
 
 
-/* Banner-logo [LACE]
-*/
-.evidence-laceproject-eu .header-text-no #site-logo {
-  margin: 0;
-}
-/*.X--*/ .evidence-laceproject-eu .theme-tiny-forge #site-logo img[src *= '-banner-'] {
-  display: block;
-  margin-left: 20px;
-}
-
-
 .evidence-laceproject-eu .leaflet-control .eh_evidence_hub_type {
   display: none;
 }
@@ -389,6 +378,7 @@ h1 .lace-cleanprint-buttons button {
   min-height: 105px;
   text-align: left;
   width: 100%;
+  margin: 0;
 }
 .lace-with-banner #site-logo a {
   position: relative;
