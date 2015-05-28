@@ -107,7 +107,7 @@ jQuery(function ($) {
 	style: { classes: 'x-text-hover-qtip qtip-bootstrap' },
 	show: { solo: true, modal: false },
 	hide: {
-	  delay: 3000  // Milliseconds.
+	  delay: 2500  // Milliseconds.
 	  //distance: 20  // Pixels.
 	}
   });

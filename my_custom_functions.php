@@ -62,6 +62,9 @@ class IET_Custom_Functions {
       $classes[] = 'theme-' . strtolower(str_replace( ' ', '-', get_current_theme() ));
 
       $classes[] = 'header-text-' . ( display_header_text() ? 'yes' : 'no' );
+
+      $custom_cls = self::get_option( 'iet_custom_fn_body_class' );
+      $classes[] = preg_match( '/^[\w \-]+$/', $custom_cls ) ? $custom_cls : '';
     }
 
     if (self::is_debug()) {

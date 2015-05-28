@@ -45,7 +45,8 @@
 }
 
 .evidence-laceproject-eu #iet-attribution-logo svg g {
-  fill: #43672B;
+  /*fill: #43672B;*/
+  fill: #336;
 }
 .trickytopic-juxtalearn-net #iet-attribution-logo svg g {
   fill: #1daa9e;
@@ -56,7 +57,7 @@
 */
 .evidence-laceproject-eu .main-navigation li a {
   font-size: 1.15em;
-  color: #43673B;
+  color: #43672b;
 }
 .evidence-laceproject-eu .main-navigation .sub-menu li a {
   font-size: 1em;
@@ -69,12 +70,22 @@
   border: 1px solid #bbb;
   border-radius: 3px;
   line-height: 1.6em;
-  padding: 3px 10px;
+  padding: 4px 10px;
   font-size: 1.05em;
 }
 
-.evidence-laceproject-eu .main-navigation .menu-item-121 > a {
-  border-style: dashed;
+.evidence-laceproject-eu .main-navigation .nav-menu > li /*.menu-item-121*/ > a[href *= '/contribute/'] {
+  text-transform: uppercase;
+  border-color: #43672b;
+  background: #43672b;
+  color: #fff;
+}
+
+.lace-orange .widget-title {
+  background: #f60;
+  color: #111;
+  display: inline-block;
+  padding: 0 4px;
 }
 
 
@@ -358,6 +369,50 @@ body /*text-hover*/ .qtip.qtip-default {
 .lace-cleanprint-buttons {
   display: inline-block;
   float: right;
+}
+.lace-cleanprint-buttons button {
+  /*font-size: medium;*/
+  padding: 3px 13px;
+}
+h1 .lace-cleanprint-buttons button {
+  font-size: .55em;
+}
+.lace-cleanprint-qtip img {
+  display: block;
+}
+
+
+/* LACE banner [Bug: #10]
+*/
+.lace-with-banner #site-logo {
+  float: none !important;
+  min-height: 105px;
+  text-align: left;
+  width: 100%;
+}
+.lace-with-banner #site-logo a {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.lace-with-banner #site-logo img {
+  position: absolute;
+  display: inline-block;
+}
+.lace-with-banner #site-logo img.lace-bnr.left {
+  left: 0;
+  z-index: 100;
+}
+.lace-with-banner #site-logo img.lace-bnr.right {
+  right: 0;
+}
+.lace-with-banner img#site-logo-image {
+  display: none;
+}
+@media screen and (min-width: 770px) {
+  .lace-with-banner #site-title-wrapper {
+    display: none;
+  }
 }
 
 
