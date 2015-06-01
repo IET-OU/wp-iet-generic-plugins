@@ -41,7 +41,7 @@
 }
 .evidence-laceproject-eu svg #barchart .negative,
 .evidence-laceproject-eu svg #map circle.negative {
-  fill: #596190;  /* LACE blue */
+  fill: #336;  /**Was: #596190  /* LACE blue */
 }
 
 .evidence-laceproject-eu #iet-attribution-logo svg g {
@@ -50,6 +50,26 @@
 }
 .trickytopic-juxtalearn-net #iet-attribution-logo svg g {
   fill: #1daa9e;
+}
+
+
+/* Key for SVG 'country-map' [LACE]
+*/
+.evidence-laceproject-eu .evidence-map-key .positive i,
+.evidence-laceproject-eu .evidence-map-key .negative i {
+  opacity: .65;    /* Was: .6 */
+  display: inline-block;
+  min-width: 22px;
+  width: 1.6em;
+  height: 1.2em;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+.evidence-laceproject-eu .evidence-map-key .positive i {
+  background: #43672B;  /* LACE green */
+}
+.evidence-laceproject-eu .evidence-map-key .negative i{
+  background: #336;  /*Was: #596190*/  /* LACE blue */
 }
 
 
@@ -79,6 +99,31 @@
   border-color: #43672b;
   background: #43672b;
   color: #fff;
+}
+.evidence-laceproject-eu .nav-menu > li > a[href *= '/tests-'] {
+  text-transform: none;
+  font-size: small;
+  /*color: red;*/
+}
+.X--evidence-laceproject-eu .main-navigation li {
+  margin: 0 32px 0 0;
+  margin: 0 2.3rem 0 0;
+}
+/*.evidence-laceproject-eu .main-navigation li.menu-item-208 /*last-item*/
+.evidence-laceproject-eu .main-navigation li:last-child {
+  margin: 0;
+}
+@media screen and (min-width: 770px) {
+  .evidence-laceproject-eu .main-navigation ul.nav-menu {
+    border-top: none;
+  }
+}
+
+.evidence-laceproject-eu .search-results .page-title {
+  color: #333;
+}
+.evidence-laceproject-eu .entry-header {
+  margin-bottom: .2rem;  /**Was: 1.7..rem*/
 }
 
 .lace-orange .widget-title {
@@ -292,6 +337,24 @@ button.jxl-print {
 .evidence-laceproject-eu .facetious_post_type [value=suggestion],
 .evidence-laceproject-eu .facetious_post_type [value=location] {
   display: none;
+}
+
+
+.XX-evidence-laceproject-eu .widget_facetious_widget .widget-title {
+  display: none;
+}
+.evidence-laceproject-eu .widget_facetious_widget .facetious_search label:before,
+.evidence-laceproject-eu .widget_facetious_widget .facetious_submit_button:before {
+  font: 1.1em 'Elusive-Icons';
+  content: "\e643";  /* .el-icon-search */
+  display: inline-block;
+  margin-right: 4px;
+}
+.evidence-laceproject-eu .widget_facetious_widget .facetious_submit_button {
+  font-size: 1.1em;
+}
+.evidence-laceproject-eu .widget_facetious_widget {
+  margin-bottom: 2rem;  /** Was: 1.714..rem */
 }
 
 
