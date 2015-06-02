@@ -27,6 +27,12 @@ jQuery(function ($) {
   $(postType + ".original").empty();
   $(sel_subject + ".original").empty();
 
+
   // [LACE]+
   $("#facetious_filter_evidence_hub_polarity option[value = '']").text("Any Polarity");
+
+  $form.find(".facetious_submit")
+    .empty()
+    .append('<button type="submit" class="facetious_submit_button">Search</button>');
+
 });
