@@ -2,10 +2,10 @@
 /*
 Plugin Name: IET WP_Query
 Plugin URI:  https://github.com/IET-OU/oer-evidence-hub-org
-Description: Shortcode [wp_query] wrapper around WordPress core function: `wp_query` [LACE]
+Description: Shortcode [wp_query] wrapper around WordPress core class: `WP_Query` [LACE]
 Author:      Nick Freear [@IET-OU]
 Author URI:  https://github.com/IET-OU
-Version:     0.1
+Version:     0.2
 */
 
 
@@ -35,11 +35,13 @@ class IET_WP_Query_Plugin {
 
     $post_type = 'post';
     $post_status = 'publish';
-    $orderby = 'title';
-    $order = 'ASC';
+    $orderby = 'title';  #'date'
+    $order = 'ASC';      #'DESC'
     $posts_per_page = -1;
 
     extract( $attrs );
+
+    $post_type = is_string( $post_type ) ? explode( ',', $post_type ) : $post_type;
 
     $args = array(
       'query ' => $query,
@@ -63,8 +65,10 @@ class IET_WP_Query_Plugin {
     // The Loop
     if ('full' === $format):
       $this->the_loop_full( $the_query );
+    elseif ('richlist' === $format):
+      $this->the_loop_richlist( $the_query );
     else:
-      $this->the_loop_list( $the_query );  
+      $this->the_loop_list( $the_query );
     endif;
 
     /* Restore original Post Data */
@@ -89,6 +93,22 @@ class IET_WP_Query_Plugin {
     endif;
   }
 
+  protected function the_loop_richlist( $the_query ) {
+    // The Loop
+    if ( $the_query->have_posts() ):
+      echo '<ul>';
+      while ( $the_query->have_posts() ):
+        $the_query->the_post(); ?>
+  <li class="type-<?php echo get_post_type()?>"><a href="<?php the_permalink()?>"
+  ><?php the_title()?></a> <i><?php the_author()?></i> <time datetime="<?php the_date_xml()?>"
+  ><?php echo get_the_date()?></time> <small><?php echo get_post_type()?></small>
+<?php
+      endwhile;
+      echo '</ul>';
+    else: ?>
+      <p class=no-posts-found >No posts found.</p><?php
+    endif;
+  }
 
   protected function the_loop_list( $the_query ) {
     // The Loop
@@ -113,6 +133,10 @@ class IET_WP_Query_Plugin {
       foreach ($attrs as $key => $value) {
         if (is_string( $value )) {
           $classes[] = $key .'-'. $value;
+        } else {
+          //sort( $value, SORT_NATURAL );
+          sort( $value );
+          $classes[] = $key .'-'. implode( '-', $value );
         }
       }
     }
