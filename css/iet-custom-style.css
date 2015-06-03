@@ -9,6 +9,10 @@
 }
 
 
+.lace-ragged-right .entry-content {
+  text-align: left;
+}
+
 .X-test-site .site-header h1 a {
   color: orange;
 }
@@ -148,6 +152,10 @@
   padding: 0 4px;
 }
 
+.lace-map-hide-sankey svg #sandisplay {
+  display: none;
+}
+
 /*.type-page a[href *= 'page_id=114']:after {
   content: " (lock) ";
 }*/
@@ -174,6 +182,16 @@ a[href] .el-icon-user {
 }
 .lace-remove-ev-tags .iet-wp-tag-cloud-plugin a[ href *= 'tag/ev-' ] {
   display: none;
+}
+
+/* Shortcode: [wp_query] format=richlist */
+.lace-richlist .iet-wp-query-plugin a {
+  display: inline-block;
+  max-width: 30em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: bottom;
 }
 
 
