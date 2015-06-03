@@ -47,10 +47,11 @@ class IET_WP_Query_Plugin {
       'query ' => $query,
       'post_type' => $post_type,
       'post_status' => $post_status,
-  	  'orderby' => $orderby,
+      'orderby' => $orderby,
       'order' => $order,
       'posts_per_page' => $posts_per_page,
-	  );
+      'x_format' => $format,
+    );
 
     $classes = $this->get_classes( $args );
 
@@ -131,6 +132,9 @@ class IET_WP_Query_Plugin {
     $classes[] = str_replace( '_', '-', strtolower( __CLASS__ )); 
     if ($attrs) {
       foreach ($attrs as $key => $value) {
+
+        if (!$value) continue;
+
         if (is_string( $value )) {
           $classes[] = $key .'-'. $value;
         } else {

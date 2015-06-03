@@ -9,10 +9,6 @@
 }
 
 
-.lace-ragged-right .entry-content {
-  text-align: left;
-}
-
 .X-test-site .site-header h1 a {
   color: orange;
 }
@@ -156,6 +152,14 @@
   display: none;
 }
 
+.lace-ragged-right .entry-content {
+  text-align: left;
+}
+
+.lace-propositions li {
+  list-style-type: upper-alpha;
+}
+
 /*.type-page a[href *= 'page_id=114']:after {
   content: " (lock) ";
 }*/
@@ -185,7 +189,7 @@ a[href] .el-icon-user {
 }
 
 /* Shortcode: [wp_query] format=richlist */
-.lace-richlist .iet-wp-query-plugin a {
+.lace-richlist-clip .iet-wp-query-plugin.x_format-richlist a {
   display: inline-block;
   max-width: 30em;
   text-overflow: ellipsis;

@@ -6,6 +6,7 @@ jQuery(function ($) {
 
   var W = window
     , C = W.console
+    , $body_class = $("#lace-js-body-class")
     , has_cleanprint = W.WpCpCleanPrintPrintHtml || W.CleanPrintHtml
     , $inject_cleanprint = $("body") //.search-results, body.single-hypothesis")
     , clearprint_post_re = /(search-results|postid-\d+)/
@@ -13,6 +14,8 @@ jQuery(function ($) {
     , cleanprint_include_sel = ".page-title, .entry-title, #X-primary"
     , vis_table_row_sel = ".hypothesis #country-vis-table tbody tr";
 
+  C && console.log("Body class:", $body_class);
+  $("body").addClass($body_class && $body_class.attr("class"));
 
   /* Fix for blank country-cell in [hypothesis_geosummary] table [Bug: #6]
   */
