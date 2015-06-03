@@ -22,9 +22,23 @@
   letter-spacing: 0.03em;
 }
 
+.evidence-laceproject-eu a:hover,
+.evidence-laceproject-eu a:active {
+  color: #f60;  /**Was: #FC9F00;*/
+}
 
 .entry-header .entry-title {
   color: #333;
+}
+
+
+.small { font-size: small; }
+.inset {
+  border: 1px solid #ddc;
+  padding: 1em 1em 0 1em;
+  margin: 2em;
+  background: #fefbfe;
+  border-radius: 4px;
 }
 
 
@@ -105,9 +119,10 @@
   font-size: small;
   /*color: red;*/
 }
-.X--evidence-laceproject-eu .main-navigation li {
-  margin: 0 32px 0 0;
-  margin: 0 2.3rem 0 0;
+.evidence-laceproject-eu .main-navigation li {
+  /*margin: 0 32px 0 0;
+  margin: 0 2.3rem 0 0;*/
+  margin: 0 3.7rem 0 0;
 }
 /*.evidence-laceproject-eu .main-navigation li.menu-item-208 /*last-item*/
 .evidence-laceproject-eu .main-navigation li:last-child {
@@ -133,7 +148,6 @@
   padding: 0 4px;
 }
 
-
 /*.type-page a[href *= 'page_id=114']:after {
   content: " (lock) ";
 }*/
@@ -150,12 +164,16 @@ a[href] .el-icon-user {
 }
 
 
-.tagcloud.x_display_count-after a:after {
+/* Shortcode: [tagcloud] */
+.iet-wp-tag-cloud-plugin.x_display_count-after a:after {
   content: "(" attr( title ) ")";
   display: inline-block;
   padding: 0 0.5em;
   text-decoration: none;
   color: #222;
+}
+.lace-remove-ev-tags .iet-wp-tag-cloud-plugin a[ href *= 'tag/ev-' ] {
+  display: none;
 }
 
 
@@ -363,10 +381,10 @@ button.jxl-print {
 body /*text-hover*/ .qtip.qtip-default {
   font-size: .95em;
   line-height: 1.25em;
-  border: 1px solid #bba;
+  border: 1px solid #cca;
   border-radius: 4px;
   padding: 5px 0;
-  background-color: #fefffc;
+  background-color: #fefbfe;
   color: #222;
 }
 .widget-area acronym, footer acronym {
@@ -378,10 +396,13 @@ body /*text-hover*/ .qtip.qtip-default {
 /* Information/ warning/ off-line/ maintenance message [LACE]+
 */
 .widget-area .widget .jxl-message p {
-  color: #c60; font-size: 1.1em; margin: .8em 0; line-height: 1.4em;
+  color: #e60; /*#c60*/ font-size: 1.1em; margin: .8em 0; line-height: 1.4em;
 }
+.widget-area .widget .jxl-message.error p {
+  color: red;
+} 
 .jxl-message {
-  border: 1px solid #bba; padding: 0 8px; background: #fefffc; border-radius: 4px;
+  border: 1px solid #cca; padding: 0 8px; background: #fefbfe; border-radius: 4px;
 }
 
 
