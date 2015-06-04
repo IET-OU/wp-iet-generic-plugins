@@ -28,7 +28,8 @@
 .evidence-laceproject-eu .widget-area .widget a:active,
 .evidence-laceproject-eu footer[role="contentinfo"] a:hover,
 .evidence-laceproject-eu #footer-widgets a:hover,
-.evidence-laceproject-eu #footer-widgets a:active {
+.evidence-laceproject-eu #footer-widgets a:active,
+.evidence-laceproject-eu #site-generator a:hover {
   color: #f60;  /**Was: #FC9F00;*/
 }
 
