@@ -23,7 +23,12 @@
 }
 
 .evidence-laceproject-eu a:hover,
-.evidence-laceproject-eu a:active {
+.evidence-laceproject-eu a:active,
+.evidence-laceproject-eu .widget-area .widget a:hover,
+.evidence-laceproject-eu .widget-area .widget a:active,
+.evidence-laceproject-eu footer[role="contentinfo"] a:hover,
+.evidence-laceproject-eu #footer-widgets a:hover,
+.evidence-laceproject-eu #footer-widgets a:active {
   color: #f60;  /**Was: #FC9F00;*/
 }
 
@@ -59,8 +64,8 @@
 }
 
 .evidence-laceproject-eu #iet-attribution-logo svg g {
-  /*fill: #43672B;*/
-  fill: #336;
+  fill: #43672B;
+  /*fill: #336;*/
 }
 .trickytopic-juxtalearn-net #iet-attribution-logo svg g {
   fill: #1daa9e;
