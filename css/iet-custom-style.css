@@ -91,7 +91,7 @@
 */
 .evidence-laceproject-eu .main-navigation li a {
   font-size: 1.15em;
-  color: #43672b;
+  color: #336;  /**Was: #43672b;*/
 }
 .evidence-laceproject-eu .main-navigation .sub-menu li a {
   font-size: 1em;
@@ -110,8 +110,8 @@
 
 .evidence-laceproject-eu .main-navigation .nav-menu > li /*.menu-item-121*/ > a[href *= '/contribute/'] {
   text-transform: uppercase;
-  border-color: #43672b;
-  background: #43672b;
+  border-color: #336;  /**Was: #43672b;*/
+  background: #336;  /**Was: #43672b;*/
   color: #fff;
 }
 .evidence-laceproject-eu .nav-menu > li > a[href *= '/tests-'] {
@@ -356,14 +356,16 @@ button.jxl-print {
 
 /* Error page [LACE]+ [Bug: #4]
 */
-.not-found header {
-  margin: .9em 0;
+body .not-found .entry-header {
+  margin: .8em 0 2em;
 }
-
-.not-found button[onclick *= 'history'] {
+.not-found button[ onclick ^= history ] {
   font-size: 1.2em;
   padding: 4px 15px;
   margin: .8em 0;
+}
+.search-no-results button[ onclick ^= history ] {
+  display: none;
 }
 
 
