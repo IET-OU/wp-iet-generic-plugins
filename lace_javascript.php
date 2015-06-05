@@ -15,8 +15,8 @@ Version:     0.1
 class Lace_Javascript_Plugin {
 
   public function __construct() {
-    add_action( 'wp_footer', array( &$this, 'wp_footer_javascript' ));
-    add_action( 'wp_footer', array( &$this, 'text_hover_qtip_javascript' ));
+    add_action( 'wp_footer', array( &$this, 'wp_footer_javascript' ), 99);
+    add_action( 'wp_footer', array( &$this, 'text_hover_qtip_javascript' ), 100);
 
     add_action( 'wp_enqueue_scripts', array( &$this, 'front_enqueue_scripts' ));
   }

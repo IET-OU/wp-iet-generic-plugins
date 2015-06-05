@@ -40,6 +40,13 @@ class IET_WP_Options_Plugin {
             self::MENU_SLUG,
             array( &$this, 'create_options_page' )
         );
+        $hook_suffix = add_options_page(
+            'oEmbed info',
+            'oEmbed info',
+            self::CAPABILITY,
+            self::MENU_SLUG . '-oembed',
+            array( &$this, 'create_oembed_info_page' )
+        );
     }
 
     /** Callback to create a phpinfo() page. */
@@ -72,7 +79,25 @@ class IET_WP_Options_Plugin {
         echo '</pre>';
     }
 
-    public function phpinfo_style( $page ) {
+    public function create_oembed_info_page() {
+        $wp_oembed = _wp_oembed_get_object();
+        ?>
+
+        <div id=iet-wp-oembed >
+        <h2> oEmbed providers </h2>
+        <table>
+            <tr><th> Format </th><th> Provider </th><!--<th> Regex? </th>--></tr>
+
+        <?php foreach ( $wp_oembed->providers as $fmt => $prov ): ?>
+            <tr><td><?php echo $fmt ?></td> <td><?php echo $prov[ 0 ] ?></td></tr>
+        <?php endforeach; ?>
+        </table>
+        </div>
+
+<?php
+    }
+
+    protected function phpinfo_style( $page ) {
         preg_match( '#<style.*?>(.+?)<\/style#smi', $page, $matches );
         $style = explode( '}', $matches[ 1 ] );
         $css_out = array();
