@@ -139,6 +139,11 @@
     border-top: none;
   }
 }
+.evidence-laceproject-eu .main-navigation.toggled li a,
+.evidence-laceproject-eu body .main-navigation h1 {
+  color: #fff;
+  font-size: 1em;
+}
 
 .evidence-laceproject-eu .search-results .page-title {
   color: #333;
