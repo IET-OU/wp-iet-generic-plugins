@@ -169,6 +169,10 @@
 
 .lace-propositions li {
   list-style-type: upper-alpha;
+  line-height: 2em;
+}
+.entry-content ul {
+  margin: 1rem 0;
 }
 
 /*.type-page a[href *= 'page_id=114']:after {

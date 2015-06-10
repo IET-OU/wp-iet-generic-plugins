@@ -20,6 +20,9 @@ class IET_WP_Query_Plugin {
 
   const SHORTCODE = 'wp_query';
 
+  const ACTION = 'iet_wp_query_loop';
+
+
   public function __construct() {
     add_shortcode( self::SHORTCODE, array( &$this, 'shortcode' ));
   }
@@ -38,6 +41,7 @@ class IET_WP_Query_Plugin {
     $orderby = 'title';  #'date'
     $order = 'ASC';      #'DESC'
     $posts_per_page = -1;
+    $tag = null;
 
     extract( $attrs );
 
@@ -50,6 +54,7 @@ class IET_WP_Query_Plugin {
       'orderby' => $orderby,
       'order' => $order,
       'posts_per_page' => $posts_per_page,
+      'tag'   => $tag,
       'x_format' => $format,
     );
 
@@ -60,7 +65,7 @@ class IET_WP_Query_Plugin {
     $the_query = new WP_Query( $args );
 
     ob_start(); ?>
-
+  <!-- WP_Query SQL: <?php echo $the_query->request ?>; -->
   <div class="<?php echo $classes ?>"><?php
 
     // The Loop
@@ -68,8 +73,10 @@ class IET_WP_Query_Plugin {
       $this->the_loop_full( $the_query );
     elseif ('richlist' === $format):
       $this->the_loop_richlist( $the_query );
-    else:
+    elseif ('list' === $format):
       $this->the_loop_list( $the_query );
+    else:
+      do_action( self::ACTION, $the_query, $format );
     endif;
 
     /* Restore original Post Data */
