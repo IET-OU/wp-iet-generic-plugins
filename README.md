@@ -9,9 +9,14 @@ A collection of generic WordPress plugins, including:
 * IET attribution
 * IET custom style
 
-Compatible with WordPress 4.1 (onwards?)
 
-This project is [Composer][]-enable. See [Using Composer with WordPress][].
+### [Usage and how-to guide](docs/USAGE.md)
+
+---
+
+Compatible with WordPress 4.1 (onwards)
+
+This project is [Composer][]-enabled. See [Using Composer with WordPress][].
 
 Developed for the [JuxtaLearn][] and [LACE][] projects.
 
