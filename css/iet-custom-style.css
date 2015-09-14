@@ -159,7 +159,8 @@
   padding: 0 4px;
 }
 
-.lace-map-hide-sankey svg #sandisplay {
+/* Option to hide Sankey diagram within geo. map [Bug: #10] */
+.lace-map-hide-sankey #evidence-map svg #sandisplay {
   display: none;
 }
 
@@ -439,7 +440,7 @@ body /*text-hover*/ .qtip.qtip-default {
 }
 .widget-area .widget .jxl-message.error p {
   color: red;
-} 
+}
 .jxl-message {
   border: 1px solid #cca; padding: 0 8px; background: #fefbfe; border-radius: 4px;
 }
