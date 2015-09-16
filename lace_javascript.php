@@ -17,6 +17,7 @@ class Lace_Javascript_Plugin {
   public function __construct() {
     add_action( 'wp_footer', array( &$this, 'wp_footer_javascript' ), 99);
     add_action( 'wp_footer', array( &$this, 'text_hover_qtip_javascript' ), 100);
+    add_action( 'admin_footer', array( &$this, 'admin_footer_javascript' ));
 
     add_action( 'wp_enqueue_scripts', array( &$this, 'front_enqueue_scripts' ));
   }
@@ -25,6 +26,26 @@ class Lace_Javascript_Plugin {
     wp_enqueue_script( 'lace-javascript', plugins_url(
       'js/lace-javascript.js', __FILE__
     ), array( 'jquery' ), false, $in_footer = TRUE );
+  }
+
+
+  public function admin_footer_javascript() { ?>
+  <script id="lace-eh-form-js">
+  /*
+    Evidence-Hub form edits.
+  */
+  jQuery(function ($) {
+    $("#evidence_hub_sector, #evidence_hub_hypothesis_id").attr({
+        required: "required",
+        "aria-required": true
+    });
+    $("._NOT_REQUIRED_label[ for = evidence_hub_sector ]")
+        .addClass("required")
+        .append("<i>*</i>") ;
+
+  });
+  </script>
+<?php
   }
 
   /** Javascript to fix the "Not found" message for evidence form [Bug: #27].
@@ -47,10 +68,10 @@ jQuery(function ($) {
     referrer = document.referrer,
     W = window;
 
-  $private_link.append(icon_lock).attr("title", "Login required");  
+  $private_link.append(icon_lock).attr("title", "Login required");
 
   if (is_not_found && is_private_page) {
-  
+
     $(".entry-title").html(icon_lock +
       " Sorry, you don't have permission to view this page");
     $(".entry-content p:first").html(
