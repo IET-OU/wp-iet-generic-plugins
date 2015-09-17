@@ -81,9 +81,14 @@ class IET_WP_Options_Plugin {
 
     public function create_oembed_info_page() {
         $wp_oembed = _wp_oembed_get_object();
+
+        $oembed_count = $this->get_oembed_cache();
         ?>
 
         <div id=iet-wp-oembed >
+        <p>Count of oEmbed records in 'postmeta' table: <?php echo $oembed_count ?>
+        <p>Count of oEmbed provider entries: <?php echo count( $wp_oembed->providers ) ?>
+
         <h2> oEmbed providers </h2>
         <table>
             <tr><th> Format </th><th> Provider </th><!--<th> Regex? </th>--></tr>
@@ -95,6 +100,19 @@ class IET_WP_Options_Plugin {
         </div>
 
 <?php
+    }
+
+    protected function get_oembed_cache( $count_only = true ) {
+        global $wpdb;
+
+        if ($count_only) {
+            $cache = $wpdb->get_var(
+                "SELECT COUNT(*) FROM wp_postmeta WHERE meta_key LIKE '%_oembed%'" );
+        } else {
+            $cache = $wpdb->get_results(
+                "SELECT * FROM wp_postmeta WHERE meta_key LIKE '%_oembed%'" );
+        }
+        return $cache;
     }
 
     protected function phpinfo_style( $page ) {
@@ -114,4 +132,3 @@ class IET_WP_Options_Plugin {
     }
 }
 $iet_wp_options = new IET_WP_Options_Plugin();
-
