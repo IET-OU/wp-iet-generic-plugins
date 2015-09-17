@@ -7,6 +7,12 @@
 :focus /*, a:hover*/ {
   outline: 1px dotted #333 !important;
 }
+#site-navigation .assistive-text:focus {
+  width: auto;
+  height: auto;
+  font-size: 1.05em;
+  border-color: #666;
+}
 
 
 .X-test-site .site-header h1 a {

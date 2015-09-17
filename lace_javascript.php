@@ -35,7 +35,7 @@ class Lace_Javascript_Plugin {
     Evidence-Hub form edits.
   */
   jQuery(function ($) {
-    $("#evidence_hub_sector, #evidence_hub_hypothesis_id").attr({
+    $(".html5-require #evidence_hub_sector, .html5-require #evidence_hub_hypothesis_id").attr({
         required: "required",
         "aria-required": true
     });
