@@ -2,7 +2,7 @@
 */
 
 
-/* Keyboard accessibility.
+/* Keyboard accessibility [a11y][Bug: #17]
 */
 :focus /*, a:hover*/ {
   outline: 1px dotted #333 !important;
@@ -12,6 +12,20 @@
   height: auto;
   font-size: 1.05em;
   border-color: #666;
+}
+.lace-assistive-help {
+  position: absolute;
+  top: -1000px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
++  background: #f8f8f8;
+  padding: 8px 5px;
+  text-align: center;
+  font-size: .95em;
+}
+.lace-assistive-help:focus {
+  top: auto;
+  z-index: 10;
 }
 
 

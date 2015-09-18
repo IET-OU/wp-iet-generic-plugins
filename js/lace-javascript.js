@@ -9,8 +9,8 @@ jQuery(function ($) {
     , $body_class = $("#lace-js-body-class")
     , has_cleanprint = W.WpCpCleanPrintPrintHtml || W.CleanPrintHtml
     , $inject_cleanprint = $("body") //.search-results, body.single-hypothesis")
-    , clearprint_post_re = /(search-results|postid-\d+)/
-    , cleanprint_exclude_sel = "#cookie-notice, .nav-menu, .assistive-text, .jxl-message, .oer-chart-loading, .leaflet-control-container, .hyp-tpl-hint"
+    , cleanprint_post_re = /(search-results|postid-\d+)/
+    , cleanprint_exclude_sel = "#cookie-notice, .nav-menu, .assistive-text, .lace-assistive-help, .jxl-message, .oer-chart-loading, .leaflet-control-container, .hyp-tpl-hint"
     , cleanprint_include_sel = ".page-title, .entry-title, #X-primary"
     , vis_table_row_sel = ".hypothesis #country-vis-table tbody tr";
 
@@ -50,6 +50,11 @@ jQuery(function ($) {
     $(".leaflet-bottom.leaflet-left").append($map_icon[0].outerHTML);
   }
 
+  // Accessibility-related help [a11y][Bug: 17]
+  $(".nav-menu:first").before(
+  '<p class="lace-assistive-help lace-nav-help" tabindex="0" role="note">' +
+  'You can navigate the top level of the navigation using the left &amp; right arrow keys. Screen reader users can use ALT plus the left &amp; right arrows.' +
+  '</p>');
 
   // LACE banner [Bug: #10]
   var logo_sel = "#site-logo-image"
@@ -71,7 +76,7 @@ jQuery(function ($) {
   if (has_cleanprint) {
 
   if ($inject_cleanprint.length) {
-    var post_id = $("body").attr("class").match(clearprint_post_re);
+    var post_id = $("body").attr("class").match(cleanprint_post_re);
     post_id = (post_id && post_id[1]) || "custom";
 
     $(".page-title, .entry-title").first().append(
