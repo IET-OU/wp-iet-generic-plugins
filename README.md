@@ -18,7 +18,9 @@ Compatible with WordPress 4.1 (onwards)
 
 This project is [Composer][]-enabled. See [Using Composer with WordPress][].
 
-Developed for the [JuxtaLearn][] and [LACE][] projects.
+Developed for the [JuxtaLearn][] and [LACE][] projects. Used in:
+
+* [@IET-OU/oer-evidence-hub-org][]
 
 
 ---
@@ -30,7 +32,7 @@ License: [GNU GPL 2 onwards][gpl]
 [gpl]: http://gnu.org/licenses/gpl-2.0.html "GPL-2.0+"
 [Using Composer with WordPress]: https://roots.io/using-composer-with-wordpress/
 [Composer]: https://getcomposer.org/
-[parent]: https://github.com/IET-OU/oer-evidence-hub-org
+[@IET-OU/oer-evidence-hub-org]: https://github.com/IET-OU/oer-evidence-hub-org
 [JuxtaLearn]: http://juxtalearn.eu/
 [LACE]: http://www.laceproject.eu/ "Learning Analytics Community Exchange"
 [Institute of Educational Technology]: http://iet.open.ac.uk/
