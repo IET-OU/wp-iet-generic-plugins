@@ -122,8 +122,8 @@
 .evidence-laceproject-eu .main-navigation .sub-menu li a {
   font-size: 1em;
 }
-.evidence-laceproject-eu .main-navigation li a[href *= 'www.laceproject'],
-.evidence-laceproject-eu .main-navigation .menu-item-121 > a {
+.nav-lace-hilite .nav-menu > li > a[ href *= 'www.laceproject' ],
+.nav-contrib-hilite .nav-menu > li /*.menu-item-121*/ > a[ href *= 'contribute' ] {
   text-transform: none; /*uppercase*/
   background: #fcfcfc;
   color: #555;
@@ -134,13 +134,17 @@
   font-size: 1.05em;
 }
 
-.evidence-laceproject-eu .main-navigation .nav-menu > li /*.menu-item-121*/ > a[href *= '/contribute/'] {
+.nav-contrib-hilite .nav-menu > li > a[ href *= 'contribute' ] {
   text-transform: uppercase;
   border-color: #336;  /**Was: #43672b;*/
   background: #336;  /**Was: #43672b;*/
   color: #fff;
 }
-.evidence-laceproject-eu .nav-menu > li > a[href *= '/tests-'] {
+.nav-contrib-lowline .nav-menu > li > a[ href *= 'contribute' ] {
+  text-transform: uppercase;
+  border-bottom: 7px solid #336;
+}
+.nav-test-hilite .nav-menu > li > a[ href *= '/test' ] {
   text-transform: none;
   font-size: small;
   /*color: red;*/
@@ -547,6 +551,46 @@ h1 .lace-cleanprint-buttons button {
   .lace-with-banner #site-title-wrapper {
     display: none;
   }
+}
+
+
+/* Increase button colour contrast [a11y] */
+.lace-cleanprint-buttons button, .map-controls button {
+  background: #f4f4f4;
+  color: #111;
+  font-size: .9em;
+}
+.lace-cleanprint-buttons button:hover, .map-controls button:hover,
+.lace-cleanprint-buttons button:focus, .map-controls button:focus {
+  background: #ebebeb;
+}
+.map-controls button {
+  margin: 8px 0;
+}
+.map-controls button i {
+  color: #06c;
+}
+
+
+/* Reset login links etc. to look like links [a11y] */
+.theme-tiny-forge #site-admin-link a:link,
+.theme-tiny-forge #site-admin-link a:visited {
+  border: none;
+  background: none;
+  x-border-bottom: 1px solid #06c;
+  text-decoration: underline;
+  color: #06c;
+  font-size: 1.1em;
+}
+.evidence-laceproject-eu .theme-tiny-forge #site-admin-link a:hover,
+.evidence-laceproject-eu .theme-tiny-forge #site-admin-link a:focus,
+.evidence-laceproject-eu .theme-tiny-forge #site-admin-link a:active {
+  color: #f60;
+}
+.theme-tiny-forge #site-admin-link a:hover,
+.theme-tiny-forge #site-admin-link a:focus,
+.theme-tiny-forge #site-admin-link a:active {
+  background-color: #f2f2f2;
 }
 
 
