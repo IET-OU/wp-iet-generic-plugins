@@ -59,7 +59,8 @@ class IET_Custom_Functions {
 
     // Banner-logo [LACE][Bug: #10]
     if (is_array( $classes )) {
-      $classes[] = 'theme-' . strtolower(str_replace( ' ', '-', get_current_theme() ));
+      $theme = wp_get_theme();
+      $classes[] = 'theme-' . strtolower(str_replace( ' ', '-', $theme->name ));
 
       $classes[] = 'header-text-' . ( display_header_text() ? 'yes' : 'no' );
 
