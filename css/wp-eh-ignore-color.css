@@ -1,0 +1,70 @@
+/*!
+  Accessibility: ignore colour / high contrast mode fixes [LACE]+
+  For:  OER/ LACE evidence hub sites (EH).
+
+  @author  Nick Freear, 22 Sep 2015.
+
+  http://webdesign.about.com/od/colorcharts/l/blsystemcolors.htm
+  http://www.sitepoint.com/css-system-styles/
+*/
+
+.X-no-ignore-color svg text {
+        fill: red;
+}
+.ignore-color svg text {
+        fill: WindowText;
+        fill-opacity: 1;
+}
+.ignore-color svg #sandisplay .link {
+        stroke-opacity: 1;
+        stroke: Highlight; /* #999 */
+}
+.ignore-color svg #sandisplay .node text {
+        fill: HighlightText;
+}
+
+
+/* A bug in Firefox seems to prevent this form-fix from working!! */
+.ignore-color input, .ignore-color #page select, .ignore-color textarea {
+        border: 1px solid ButtonText;
+        box-shadow: none;
+}
+
+.ignore-color :link, .ignore-color :visited,
+.ignore-color [role = link] {
+        text-decoration: underline;
+}
+.ignore-color :focus {
+        outline: thin dotted invert;
+}
+
+/*
+  http://diythemes.com/thesis/rtfm/restore-browser-default-style-comment-submit-button/
+  http://w3.org/TR/CSS21/sample.html
+*/
+.ignore-color button, .ignore-color [role = button],
+.ignore-color a[ class *= button], .ignore-color a[href = '#'],
+.ignore-color [type = button], .ignore-color [type = submit] {
+        border: 2px outset ButtonFace;
+        background: ButtonFace;
+        color: ButtonText;
+        x-border-radius: 4px;
+        text-decoration: none;
+}
+
+.ignore-color #cookie-notice,
+.ignore-color a:link.assistive-text {
+        background-color: Highlight;
+        color: HighlightText;
+        border: 2px solid HighlightText !important; /* ButtonFace */
+}
+
+.ignore-color.lace-with-banner .site-branding #site-logo {
+        display: none !important;
+}
+.ignore-color.lace-with-banner #site-title-wrapper {
+        display: block !important;
+}
+
+
+/*End*/
