@@ -8,9 +8,10 @@
   http://www.sitepoint.com/css-system-styles/
 */
 
-.X-no-ignore-color svg text {
-        fill: red;
-}
+
+/* Country-map SVG / d3.js
+*/
+
 .ignore-color svg text {
         fill: WindowText;
         fill-opacity: 1;
@@ -23,13 +24,35 @@
         fill: HighlightText;
 }
 
-/* Evidence-map and key. */
+.ignore-color #evidence-map > svg {
+       border: 1px solid Highlight;
+}
+.ignore-color #evidence-map > svg #map .country,
+.ignore-color #evidence-map > svg .negative,
+.ignore-color #evidence-map > svg .positive {
+       stroke: Highlight;
+}
+.ignore-color #evidence-map > svg #barchart .negative,
+.ignore-color #evidence-map > svg #barchart .positive {
+       stroke: HighlightText;
+}
+
+.ignore-color svg #barchart .label {
+        font-size: 12px;
+}
+
+
+/* Evidence-map and key (Leaflet.js)
+*/
 .ignore-color .marker-cluster,
 .ignore-color .leaflet-popup-content-wrapper,
 .ignore-color .my-custom-control {
         border: 1px solid Highlight;
 }
 
+
+/* Generic HTML elements - links, buttons, forms.
+*/
 
 /* Firefox requires "inset" in ignore-color mode for form fields. */
 .ignore-color input, .ignore-color #page select, .ignore-color textarea,
@@ -74,6 +97,14 @@
         text-decoration: none;
 }
 
+
+/* Site-specific elements.
+*/
+
+body.ignore-color .main-navigation ul.nav-menu {
+       border: 1px solid HighlightText;
+       border-top: 1px solid HighlightText;
+}
 .ignore-color #cookie-notice,
 .ignore-color a:link.assistive-text {
         background-color: Highlight;
