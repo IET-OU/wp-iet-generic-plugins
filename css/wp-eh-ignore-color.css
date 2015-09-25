@@ -21,7 +21,8 @@
         stroke: Highlight; /* #999 */
 }
 .ignore-color svg #sandisplay .node text {
-        fill: HighlightText;
+        /*fill: HighlightText;*/
+        fill: WindowText;
 }
 
 .ignore-color #evidence-map > svg {
@@ -48,6 +49,17 @@
 .ignore-color .leaflet-popup-content-wrapper,
 .ignore-color .my-custom-control {
         border: 1px solid Highlight;
+}
+
+
+/* Geographical report map (hypothesis / proposition pages).
+*/
+.ignore-color #country-vis-map svg g[ clip-path ] path {
+        stroke: Highlight;
+}
+.ignore-color #country-vis-map svg path[ stroke = "#cccccc" ] {
+        stroke: WindowText;
+        stroke-width: 1;
 }
 
 
@@ -107,9 +119,15 @@ body.ignore-color .main-navigation ul.nav-menu {
 }
 .ignore-color #cookie-notice,
 .ignore-color a:link.assistive-text {
-        background-color: Highlight;
-        color: HighlightText;
-        border: 2px solid HighlightText !important; /* ButtonFace */
+        background-color: WindowFrame;
+        color: WindowText;
+        border: 3px groove HighlightText !important; /* ButtonFace */
+}
+.ignore-color #cookie-notice {
+        x-background-color: Highlight !important;
+        font-size: 1.05em;
+        min-width: 99%;
+        right: 0;
 }
 
 .ignore-color.lace-with-banner .site-branding #site-logo {
