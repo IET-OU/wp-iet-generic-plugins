@@ -23,18 +23,35 @@
         fill: HighlightText;
 }
 
+/* Evidence-map and key. */
+.ignore-color .marker-cluster,
+.ignore-color .leaflet-popup-content-wrapper,
+.ignore-color .my-custom-control {
+        border: 1px solid Highlight;
+}
 
-/* A bug in Firefox seems to prevent this form-fix from working!! */
-.ignore-color input, .ignore-color #page select, .ignore-color textarea {
-        border: 1px solid ButtonText;
+
+/* Firefox requires "inset" in ignore-color mode for form fields. */
+.ignore-color input, .ignore-color #page select, .ignore-color textarea,
+.ignore-color .google-visualization-controls-stringfilter input {
+        /*border: 1px solid ButtonText;*/
+        border: 2px inset ButtonText;
+        -moz-appearance: textfield;
         box-shadow: none;
+        /*-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);*/
 }
 
-.ignore-color :link, .ignore-color :visited,
-.ignore-color [role = link] {
-        text-decoration: underline;
-}
-.ignore-color :focus {
+.ignore-color :focus,
+.ignore-color a:hover,
+.ignore-color input:hover,
+.ignore-color select:hover,
+.ignore-color button:hover,
+.ignore-color textarea:hover,
+.ignore-color [ role = button ]:hover,
+.ignore-color [ role = link ]:hover,
+.ignore-color [ tabindex ]:hover,
+.ignore-control [ class *= button ]:hover,
+.ignore-color .leaflet-control .expander:hover {
         outline: thin dotted invert;
 }
 
@@ -42,9 +59,14 @@
   http://diythemes.com/thesis/rtfm/restore-browser-default-style-comment-submit-button/
   http://w3.org/TR/CSS21/sample.html
 */
-.ignore-color button, .ignore-color [role = button],
-.ignore-color a[ class *= button], .ignore-color a[href = '#'],
-.ignore-color [type = button], .ignore-color [type = submit] {
+.ignore-color button,
+.ignore-color [ role = button ],
+.ignore-color [ class *= button ],
+.ignore-color a[ href = '#' ],
+.ignore-color [ type = button ],
+.ignore-color [ type = submit ],
+.ignore-color .leaflet-control .expander,
+.ignore-color #cookie-notice a.button {
         border: 2px outset ButtonFace;
         background: ButtonFace;
         color: ButtonText;
