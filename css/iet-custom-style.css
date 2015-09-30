@@ -594,4 +594,19 @@ h1 .lace-cleanprint-buttons button {
 }
 
 
+.entry-content iframe {
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;  /* ?? */
+}
+.evidence-laceproject-eu .entry-content iframe[ src *= 'docs.google.com/form' ] {
+  border-radius: 10px;
+  width: 100%;
+  /*min-width: 625px;
+  height: 2140px;*/
+  min-width: 695px;  /* 756px */
+  height: 2040px;
+}
+
+
 /*End. */
