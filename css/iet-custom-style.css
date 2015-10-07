@@ -599,13 +599,15 @@ h1 .lace-cleanprint-buttons button {
   border-radius: 4px;
   overflow: hidden;  /* ?? */
 }
-.evidence-laceproject-eu .entry-content iframe[ src *= 'docs.google.com/form' ] {
+.evidence-laceproject-eu #content iframe[ src *= 'docs.google.com/form' ] {
   border-radius: 10px;
   width: 100%;
-  /*min-width: 625px;
-  height: 2140px;*/
+  /*min-width: 625px; height: 2140px;*/
   min-width: 695px;  /* 756px */
   height: 2040px;
+}
+.evidence-laceproject-eu[ data-ua *= Firefox ] #content iframe[ src *= 'google.com/form' ] {
+  height: 2180px;
 }
 
 
