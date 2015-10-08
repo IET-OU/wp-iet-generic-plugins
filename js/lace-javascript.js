@@ -118,12 +118,16 @@ jQuery(function ($) {
         return $("#cpf-closeButton").length
       }, function () {
 
+        var $cp_close_btn = $("#cpf-closeButton")
+          , $cp_dialog = $("#cpf-root iframe:first");
+
         // 1. Make the 'close' pseudo-button into a functional button.
-        $("#cpf-closeButton").attr({
+        $cp_close_btn.attr({
           role: "button",
           tabindex: 0,
-          title: "Close CleanPrint",
-          "aria-label": "Close CleanPrint"
+          title: "Close CleanPrint dialog",
+          "aria-label": "Close CleanPrint dialog",
+          "aria-controls": $cp_dialog.attr("id")
         })
         // 2. Start keyboard focus in a sensible place.
         .focus()
@@ -133,9 +137,11 @@ jQuery(function ($) {
         });
 
         // 4. Let users know this is a modal dialog (needs more work).
-        $("#cpf-root").attr({
+        $cp_dialog.attr({
           role: "dialog",
-          "aria-label": "CleanPrint"
+          title: "CleanPrint export",
+          "aria-label": "CleanPrint export",
+          "aria-owns": $cp_close_btn.attr("id")
         });
 
         /* 5. Todo: prevent keyboard navigation outside the modal dialog, while its open.
@@ -157,7 +163,7 @@ jQuery(function ($) {
         clearInterval(int_id);
         callback_FN();
       }
-    }, interval || 300); // Milliseconds.
+    }, interval || 500); // Milliseconds.
   }
 
   C && console.log('lace-javascript.js');
