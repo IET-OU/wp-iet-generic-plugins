@@ -5,7 +5,8 @@
 jQuery(function ($) {
 
   var W = window
-    , C = W.console
+    , debug = W.location.search.match(/debug=1/)
+    , C = debug && W.console
     , $body_class = $("#lace-js-body-class")
     , has_cleanprint = W.WpCpCleanPrintPrintHtml || W.CleanPrintHtml
     , $inject_cleanprint = $("body") //.search-results, body.single-hypothesis")
@@ -50,7 +51,7 @@ jQuery(function ($) {
     $(".leaflet-bottom.leaflet-left").append($map_icon[0].outerHTML);
   }
 
-  // Accessibility-related help [a11y][Bug: 17]
+  // Accessibility-related help [a11y][Bug: #17]
   $(".nav-menu:first").before(
   '<p class="lace-assistive-help lace-nav-help" tabindex="0" role="note">' +
   'You can navigate the top level of the navigation using the left &amp; right arrow keys. Screen reader users can use ALT plus the left &amp; right arrows.' +

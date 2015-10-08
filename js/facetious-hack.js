@@ -35,4 +35,17 @@ jQuery(function ($) {
     .empty()
     .append('<button type="submit" class="facetious_submit_button">Search</button>');
 
+  // Inject author field.
+  $form
+    .find(".facetious_submit")
+    .before('<p class="facetious_author hack"><label for="f_an">Author</label>'                                  +
+    ' <input name="author_name" class="facetious_filter" id="f_an" placeholder="user-name" title="Example: \'rebeccaferguson\'"></p>');
+
+  /* Accessibility [a11y][Bug: #17]
+  */
+  $form
+    .attr({ role: "search", "aria-label": "Filter evidence and projects" })
+    .find(".facetious_input_search")
+    .attr({ type: "search" });
+
 });
