@@ -450,6 +450,14 @@ body .not-found .entry-header {
   margin-bottom: 2rem;  /** Was: 1.714..rem */
 }
 
+.facetious_form .facetious_author {
+  display: none;
+}
+.evidence-laceproject-eu .logged-in .facetious_form .facetious_author {
+  display: block;
+}
+
+
 
 /* Text hover WP plugin/ qTip style [LACE] [Bug: #5]
 */
