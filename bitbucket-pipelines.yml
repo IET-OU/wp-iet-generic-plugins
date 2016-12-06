@@ -1,0 +1,18 @@
+# You can use a Docker image from Docker Hub or your own container registry
+image: phpunit/phpunit:5.0.3
+
+clone:
+  depth: 6
+
+pipelines:
+  default:
+    - step:
+        script:
+          - php --version
+          - composer --version
+          - phpunit --version
+          - composer install
+          - composer test
+          #- phpunit --configuration tests/phpunit.xml
+
+#End.
