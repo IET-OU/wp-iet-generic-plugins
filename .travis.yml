@@ -1,0 +1,19 @@
+language: php
+php:
+  - 7.0
+  #- 5.6
+  #- hhvm
+
+git:
+  depth: 6
+
+before_install:
+  - composer --version
+
+install:
+  - composer install
+
+script:
+  - composer test
+
+#End.
