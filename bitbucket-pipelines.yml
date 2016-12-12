@@ -1,4 +1,5 @@
 # You can use a Docker image from Docker Hub or your own container registry
+# https://bitbucket.org/nfreear/wp-iet-generic-plugins/addon/pipelines/home#!/
 image: phpunit/phpunit:5.0.3
 
 clone:

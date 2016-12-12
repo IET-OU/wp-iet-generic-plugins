@@ -39,6 +39,7 @@ License: [GNU GPL 2 onwards][gpl]
 [LACE]: http://www.laceproject.eu/ "Learning Analytics Community Exchange"
 [Institute of Educational Technology]: http://iet.open.ac.uk/
 [github]: https://github.com/IET-OU/wp-iet-generic-plugins
+[bitbucket]: https://bitbucket.org/nfreear/wp-iet-generic-plugins
 [travis-ci]: https://travis-ci.org/IET-OU/wp-iet-generic-plugins "Build status – Travis-CI"
 [travis-icon]: https://travis-ci.org/IET-OU/wp-iet-generic-plugins.svg
 
