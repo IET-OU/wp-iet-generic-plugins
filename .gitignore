@@ -10,4 +10,7 @@ Thumbs.db
 composer.lock
 vendor
 
+node_modules
+*eslintrc*
+
 #End.

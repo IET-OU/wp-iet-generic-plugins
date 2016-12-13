@@ -3,7 +3,7 @@
   Re-order the search form, promoting the "post-type" and subject fields.
 */
 
-jQuery(function ($) {
+window.jQuery(function ($) {
 
   'use strict';
 

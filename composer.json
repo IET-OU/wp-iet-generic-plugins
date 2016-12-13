@@ -23,6 +23,16 @@
     "wp-coding-standards/wpcs": "^0.10"
   },
   "scripts": {
+    "npm-install": "npm install eslint",
+    "eslint-config": [
+      "echo '---\n  extends: eslint:recommended\n  globals:\n    window: false\n' > .eslintrc.yaml",
+      "echo '{\n  \"extends\": \"eslint:recommended\",\n  \"globals\": { \"window\": false }\n}' > .eslintrc-XX.json"
+    ],
+    "eslint-echo": "node_modules/.bin/eslint --print-config .eslintrc.json",
+    "eslint": [
+      "node_modules/.bin/eslint  js/*",
+      "## node_modules/.bin/eslint --no-eslintrc --rule no-undef:2, eqeqeq:2, curly:2, semi:2, no-unreachable:2 --global window js/*"
+    ],
     "test": [
       "vendor/bin/parallel-lint --exclude vendor .",
       "vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs/",

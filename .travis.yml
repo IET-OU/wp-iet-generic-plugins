@@ -12,8 +12,16 @@ before_install:
 
 install:
   - composer install
+  - composer npm-install
+
+before_script:
+  - composer eslint-config
 
 script:
   - composer test
+  - composer eslint
+
+after_script:
+  - composer eslint-echo
 
 #End.

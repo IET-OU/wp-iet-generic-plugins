@@ -2,7 +2,7 @@
   Various Javascript fixes/hacks for LACE (inc. CleanPrint customizations)
 */
 
-jQuery(function ($) {
+window.jQuery(function ($) {
 
   var W = window
     , debug = W.location.search.match(/debug=1/)
@@ -15,7 +15,8 @@ jQuery(function ($) {
     , cleanprint_include_sel = ".page-title, .entry-title, #X-primary"
     , vis_table_row_sel = ".hypothesis #country-vis-table tbody tr";
 
-  C && console.log("Body class:", $body_class);
+  C && W.console.log("Body class:", $body_class);
+
   $("body").addClass($body_class && $body_class.attr("class"));
 
   /* Fix for blank country-cell in [hypothesis_geosummary] table [Bug: #6]
@@ -26,7 +27,7 @@ jQuery(function ($) {
   function () {
     var $vis_table_row = $(vis_table_row_sel);
 
-    C && console.log("Vis table:", $vis_table_row);
+    C && W.console.log("Vis table:", $vis_table_row);
 
     $vis_table_row.each(function () {
 
@@ -39,7 +40,7 @@ jQuery(function ($) {
         $row.addClass("no-location-row").attr("title", "No location given");
       }
 
-      C && console.log("Row:", $row, $cell_1);
+      C && W.console.log("Row:", $row, $cell_1);
     });
 
   });
@@ -73,7 +74,7 @@ jQuery(function ($) {
 
   /* CleanPrint customizations [Bug: #9]
   */
-  C && console.log("CleanPrint?", has_cleanprint);
+  C && W.console.log("CleanPrint?", has_cleanprint);
   if (has_cleanprint) {
 
   if ($inject_cleanprint.length) {
@@ -89,11 +90,11 @@ jQuery(function ($) {
       style: { classes: 'lace-cleanprint-qtip qtip-bootstrap' },
       show: { solo: true },
       hide: {
-	    delay: 2500
-	  }
+      delay: 2500
+    }
     });
 
-    C && console.log("Inject CleanPrint:", $inject_cleanprint);
+    C && W.console.log("Inject CleanPrint:", $inject_cleanprint);
   }
 
   $(cleanprint_exclude_sel).addClass("cleanprint-exclude");
@@ -111,12 +112,12 @@ jQuery(function ($) {
 
     /* CleanPrint - keyboard accessibility hacks (incomplete!) (uses WAI-ARIA)
     */
-    $cleanprint_bn_wrap.find("a, button").on("click", function (ev) {
+    $cleanprint_bn_wrap.find("a, button").on("click", function ( /* ev */ ) {
 
       var $cleanprint_return = $(".lace-cleanprint-buttons a, .lace-cleanprint-buttons button").first();
 
       when_call(function () {
-        return $("#cpf-closeButton").length
+        return $("#cpf-closeButton").length;
       }, function () {
 
         var $cp_close_btn = $("#cpf-closeButton")
@@ -159,13 +160,13 @@ jQuery(function ($) {
 
 
   function when_call(when_true_FN, callback_FN, interval) {
-    var int_id = setInterval(function () {
+    var int_id = W.setInterval(function () {
       if (when_true_FN()) {
-        clearInterval(int_id);
+        W.clearInterval(int_id);
         callback_FN();
       }
     }, interval || 500); // Milliseconds.
   }
 
-  C && console.log('lace-javascript.js');
+  C && W.console.log('lace-javascript.js');
 });
