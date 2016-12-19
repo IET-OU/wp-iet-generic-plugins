@@ -32,6 +32,7 @@ class Simple_Menu {
         'menu' => 'Main',
         'sub'  => NULL,
         'content' => false,
+        'comments'=> false,
     ], $attr ) );
 
     $menu_obj = wp_get_nav_menu_object( $menu ); //232 ); //'Help' ); //'Main' );
@@ -58,7 +59,7 @@ class Simple_Menu {
     $classes = self::SHORTCODE . " menu-$menu sub-$sub";
 
     if ($content) {
-      return $this->display_content( $sub_menu, $parent_id, $classes );
+      return $this->display_content( $sub_menu, $parent_id, $classes, $comments );
     }
     return $this->display_menu( $sub_menu, $parent_id, $classes );
   }
@@ -80,24 +81,64 @@ class Simple_Menu {
   }
 
 
-  protected function display_content( $sub_menu, $menu_id, $classes ) {
+  protected function display_content( $sub_menu, $menu_id, $classes, $show_comments = false ) {
     ob_start();
 
-    /* ?><ul class="<?php echo $classes ?>" id="sm-menu-<?php echo $menu_id ?>">
-  <?php */ foreach ($sub_menu as $it): ?>
+    ?><div class="<?php echo $classes ?>" id="sm-menu-<?php echo $menu_id ?>">
+  <?php foreach ($sub_menu as $it): ?>
     <div id="menu-item-<?php echo $it->object_id ?>" class="<?php self::echo_classes( $it, true ) ?>"
-      data-post='<?php self::post_json( $it ) ?>'>
+      data-post='<?php self::post_json( $it ) ?>' data-uri='<?php echo $it->url ?>'>
       <h2 class="item-title"><?php echo $it->title ?></h3>
-      <?php //$page = get_page($it->object_id);?>
-      <?php echo apply_filters('the_content', get_post_field( 'post_content', $it->object_id )); ?>
-      <?php //var_dump( $it ); exit; ?>
+      <?php echo apply_filters('the_content', get_post_field( 'post_content', $it->object_id )) ?>
+      <?php self::display_comments( $it->object_id, $show_comments ) ?>
     </div>
-  <?php endforeach; /* ?>
-    </ul><?php */
+  <?php endforeach ?>
+    </div><?php
 
     $this->end();
 
     return ob_get_clean();
+  }
+
+
+  protected static function display_comments( $post_id = null, $show_comments = false ) {
+      //echo $show_comments .' '. comments_open() .' '. get_comments_number();
+      if ( ! $show_comments || ! comments_open( $post_id ) ) {
+          return;
+      }
+
+      ?>
+      <a class="comments-btn btn btn-primary" role="button" data-toggle="collapse" data-parent="#sm-menu-Z" href="#comments-<?php echo $post_id ?>"
+          ><i class="fa fa-comments"></i>Your thoughts!</a>
+      <div class="item-comments collapse" id="comments-<?php echo $post_id ?>">
+          <?php comment_form( [
+              'id_form'     => 'commentform-' . $post_id,
+              'id_submit'   => 'submit-' . $post_id,
+              'class_submit'=> 'submit btn btn-primary',
+              'title_reply' => '<i class="fa fa-comments"></i>Your thoughts!',
+              'label_submit'=> 'Submit',
+          ], $post_id ) ?>
+      <?php if ( get_comments_number( $post_id ) ): ?>
+      <ol class="comment-list">
+          <?php
+              wp_list_comments( [
+                  'style'       => 'ol',
+                  'short_ping'  => true,
+                  'avatar_size' => 56,
+              ], get_comments([ 'post_id' => $post_id ]) );
+          ?>
+      </ol><!-- .comment-list -->
+      <?php else: ?>
+          <p class="no-comments">No thoughts yet. Be the first!</p>
+      <?php endif; ?>
+      </div>
+
+      <?php
+      /*
+      <?php if ( ($comments || comments_open()) || get_comments_number() ) :
+          echo 'YYY';
+          comments_template();
+      endif; ?>*/
   }
 
 
@@ -124,7 +165,7 @@ class Simple_Menu {
       'type' => $menu_obj->object,
       # 'post_type' => $menu_obj->post_type, # 'nav_menu_item'
       'modified'  => $menu_obj->post_modified_gmt,
-      'url'  => $menu_obj->url,
+      #'url'  => $menu_obj->url,
       'author_id' => $menu_obj->post_author,
       'author' => get_the_author_meta( 'nickname', $menu_obj->post_author ), #Deprecated: get_author_name(..)
     ]);
