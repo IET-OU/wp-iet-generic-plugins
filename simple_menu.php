@@ -34,6 +34,7 @@ class Simple_Menu {
         'sub'  => NULL,
         'content' => false,
         'comments'=> false,
+        'top_link'=> true,
     ], $attr ) );
 
     $menu_obj = wp_get_nav_menu_object( $menu ); //232 ); //'Help' ); //'Main' );
@@ -60,7 +61,7 @@ class Simple_Menu {
     $classes = self::SHORTCODE . " menu-$menu sub-$sub";
 
     if ( $content ) {
-      return $this->display_content( $sub_menu, $parent_id, $classes, $comments );
+      return $this->display_content( $sub_menu, $parent_id, $classes, $comments, $top_link );
     }
     return $this->display_menu( $sub_menu, $parent_id, $classes );
   }
@@ -88,7 +89,7 @@ class Simple_Menu {
   }
 
 
-  protected function display_content( $sub_menu, $menu_id, $classes, $show_comments = false ) {
+  protected function display_content( $sub_menu, $menu_id, $classes, $show_comments = false, $with_top_link = false ) {
     ob_start();
 
     ?><div class="<?php echo $classes ?>" id="sm-menu-<?php echo $menu_id ?>">
@@ -99,6 +100,9 @@ class Simple_Menu {
       <h2 class="item-title"><?php echo $it->title ?></h3>
       <?php echo apply_filters('the_content', get_post_field( 'post_content', $it->object_id )) ?>
       <?php self::display_comments( $it->object_id, $show_comments ) ?>
+      <?php if ( $with_top_link ): ?>
+          <a href="#site-main" class="tttt-to-top">Return to top of page</a>
+      <?php endif; ?>
     </div>
   <?php endforeach ?>
     </div><?php
