@@ -21,6 +21,7 @@ Version:     1.2-alpha
 class Simple_Menu {
 
   const SHORTCODE = 'simple_menu';
+  protected static $_post_id;
 
   public function __construct() {
 	  add_shortcode( self::SHORTCODE, [ &$this, 'shortcode_simplemenu' ] );
@@ -58,10 +59,15 @@ class Simple_Menu {
 
     $classes = self::SHORTCODE . " menu-$menu sub-$sub";
 
-    if ($content) {
+    if ( $content ) {
       return $this->display_content( $sub_menu, $parent_id, $classes, $comments );
     }
     return $this->display_menu( $sub_menu, $parent_id, $classes );
+  }
+
+
+  public static function post_id() {
+    return self::$_post_id;
   }
 
 
@@ -69,7 +75,8 @@ class Simple_Menu {
     ob_start();
 
     ?><ul class="<?php echo $classes ?>" id="sm-menu-<?php echo $menu_id ?>">
-  <?php foreach ($sub_menu as $it): ?>
+  <?php foreach ($sub_menu as $it):
+      self::$_post_id = $it->object_id; ?>
     <li id="menu-item-<?php echo $it->ID ?>" class="<?php self::echo_classes( $it ) ?>"
       ><a href="<?php echo $it->url ?>"><?php echo $it->title ?></a>
   <?php endforeach; ?>
@@ -85,7 +92,8 @@ class Simple_Menu {
     ob_start();
 
     ?><div class="<?php echo $classes ?>" id="sm-menu-<?php echo $menu_id ?>">
-  <?php foreach ($sub_menu as $it): ?>
+  <?php foreach ($sub_menu as $it):
+      self::$_post_id = $it->object_id; ?>
     <div id="menu-item-<?php echo $it->object_id ?>" class="<?php self::echo_classes( $it, true ) ?>"
       data-post='<?php self::post_json( $it ) ?>' data-uri='<?php echo $it->url ?>'>
       <h2 class="item-title"><?php echo $it->title ?></h3>
@@ -107,38 +115,20 @@ class Simple_Menu {
           return;
       }
 
-      ?>
-      <a class="comments-btn btn btn-primary" role="button" data-toggle="collapse" data-parent="#sm-menu-Z" href="#comments-<?php echo $post_id ?>"
-          ><i class="fa fa-comments"></i>Your thoughts!</a>
-      <div class="item-comments collapse" id="comments-<?php echo $post_id ?>">
-          <?php comment_form( [
-              'id_form'     => 'commentform-' . $post_id,
-              'id_submit'   => 'submit-' . $post_id,
-              'class_submit'=> 'submit btn btn-primary',
-              'title_reply' => '<i class="fa fa-comments"></i>Your thoughts!',
-              'label_submit'=> 'Submit',
-          ], $post_id ) ?>
-      <?php if ( get_comments_number( $post_id ) ): ?>
-      <ol class="comment-list">
-          <?php
-              wp_list_comments( [
-                  'style'       => 'ol',
-                  'short_ping'  => true,
-                  'avatar_size' => 56,
-              ], get_comments([ 'post_id' => $post_id ]) );
-          ?>
-      </ol><!-- .comment-list -->
-      <?php else: ?>
-          <p class="no-comments">No thoughts yet. Be the first!</p>
-      <?php endif; ?>
-      </div>
+      self::load_template( 'simple-menu-comments', false );
+  }
 
-      <?php
-      /*
-      <?php if ( ($comments || comments_open()) || get_comments_number() ) :
-          echo 'YYY';
-          comments_template();
-      endif; ?>*/
+  // https://codex.wordpress.org/Function_Reference/load_template#Loading_a_template_in_a_plugin.2C_but_allowing_theme_and_child_theme_to_override_template
+  protected static function load_template( $name = 'some-template', $require_once = true ) {
+      if ( $overridden_template = locate_template( $name . '.php' ) ) {
+         // locate_template() returns path to file
+         // if either the child theme or the parent theme have overridden the template
+         load_template( $overridden_template, $require_once );
+      } else {
+         // If neither the child nor parent theme have overridden the template,
+         // we load the template from the 'templates' sub-directory of the directory this file is in
+         load_template( __DIR__ . '/templates/' . $name . '.php', $require_once );
+      }
   }
 
 
