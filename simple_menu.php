@@ -95,15 +95,19 @@ class Simple_Menu {
     ?><div class="<?php echo $classes ?>" id="sm-menu-<?php echo $menu_id ?>">
   <?php foreach ($sub_menu as $it):
       self::$_post_id = $it->object_id; ?>
-    <div id="menu-item-<?php echo $it->object_id ?>" class="<?php self::echo_classes( $it, true ) ?>"
+    <div id="menu-item-<?php echo $it->object_id ?>" class="row <?php self::echo_classes( $it, true ) ?>"
       data-post='<?php self::post_json( $it ) ?>' data-uri='<?php echo $it->url ?>'>
+      <div class="col-md-9 guide-inner">
+
       <h2 class="item-title"><?php echo $it->title ?></h3>
       <?php echo apply_filters('the_content', get_post_field( 'post_content', $it->object_id )) ?>
       <?php self::display_comments( $it->object_id, $show_comments ) ?>
-      <?php if ( $with_top_link ): ?>
-          <a href="#site-main" class="tttt-to-top">Return to top of page</a>
-      <?php endif; ?>
     </div>
+    <div class="col-md-3 case-study"> Case study <!-- Tricky topics guide --></div>
+    </div>
+    <?php if ( $with_top_link ): ?>
+        <div class="row"><a href="#site-main" class="col-md-9 tttt-to-top">Return to top of page</a></div>
+    <?php endif; ?>
   <?php endforeach ?>
     </div><?php
 
