@@ -103,6 +103,8 @@ class Simple_Menu {
       <?php echo apply_filters('the_content', get_post_field( 'post_content', $it->object_id )) ?>
       <?php self::display_comments( $it->object_id, $show_comments ) ?>
     </div>
+
+    <?php if ( defined( 'TTTT_GUIDE_CASE_STUDY' ) ): ?>
     <div class="col-md-3 case-study">
         <!-- Tricky topics guide -->
         <p><img src="/wp-content/themes/tttt-guide/images/default-case-study.png" alt="" /></p>
@@ -110,6 +112,7 @@ class Simple_Menu {
         <?php echo apply_filters( 'lorem_small', null ) ?>
         <a href="#view-more" role="button" data-toggle="tooltip" title="View the case study.">View more</a>
     </div>
+    <?php endif; ?>
 
     <?php if ( $with_top_link ): ?>
         <div class="col-md-12"><a href="#site-main" class="col-md-9 tttt-to-top">Return to top of page</a></div>
