@@ -23,6 +23,8 @@ This project is [Composer][]-enabled. See [Using Composer with WordPress][].
 Developed for the [JuxtaLearn][] and [LACE][] projects. Used in:
 
 * [@IET-OU/oer-evidence-hub-org][]
+* LACE Evidence Hub, http://evidence.laceproject.eu
+* Tricky Topics Guide, http://tricky-topics-guide.ac.uk
 
 
 ---

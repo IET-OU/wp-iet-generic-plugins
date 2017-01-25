@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Work-in-progress
  * Plugin URI:
- * Description: ...
+ * Description: Filter to display configurable text, eg. "Under construction" in empty pages / posts.
  * Author:      Nick Freear
  * Author URI:  https://github.com/nfreear
  * Version:     1.0-alpha
@@ -16,7 +16,7 @@
 class Work_In_Progress_Filter_Plugin {
 
 	public function __construct() {
-		add_filter( 'the_content', [ &$this, 'filter_the_content' ]);
+		add_filter( 'the_content', [ &$this, 'filter_the_content' ] );
 	}
 
 
@@ -24,11 +24,11 @@ class Work_In_Progress_Filter_Plugin {
 
 		if ( ! $content ) {
 
-            $page_slug = defined( 'WORK_IN_PROGRESS_SLUG' ) ? WORK_IN_PROGRESS_SLUG : 'work-in-progress';
+			$page_slug = defined( 'WORK_IN_PROGRESS_SLUG' ) ? WORK_IN_PROGRESS_SLUG : 'work-in-progress';
 
-            $wp_post = get_page_by_path( $page_slug );
+			$wp_post = get_page_by_path( $page_slug );
 
-			return '<div class="'. $page_slug .'">' . $wp_post->post_content . '</div>';
+			return '<div class="' . $page_slug . '">' . $wp_post->post_content . '</div>';
 		}
 
 		return $content;

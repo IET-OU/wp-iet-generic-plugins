@@ -3,7 +3,7 @@
 /*
  Plugin Name: Lorem Filter
  Plugin URI:
- Description: ...
+ Description: Filter to display Lorem Ipsum text in empty pages / posts.
  Author:      Nick Freear
  Author URI:  https://github.com/nfreear
  Version:     1.0-alpha
@@ -22,12 +22,12 @@ use SoderlindLorem as SoderlindLorem;
 class Lorem_Filter_Plugin {
 
 	public function __construct() {
-		add_filter( 'the_content', [ &$this, 'filter_the_content' ]);
-		add_filter( 'lorem_small', [ &$this, 'filter_lorem_small' ]);
+		add_filter( 'the_content', [ &$this, 'filter_the_content' ] );
+		add_filter( 'lorem_small', [ &$this, 'filter_lorem_small' ] );
 	}
 
 	public function filter_lorem_small( $var_paras = null ) {
-        $var_paras = $var_paras > 1 ? $var_paras : 1;
+		$var_paras = $var_paras > 1 ? $var_paras : 1;
 
 		if ( class_exists( 'SoderlindLorem' ) ) {
 
@@ -44,7 +44,7 @@ class Lorem_Filter_Plugin {
 
 		if ( ! $content && class_exists( 'SoderlindLorem' ) ) {
 
-            if ( class_exists( 'Dotenv\Dotenv' )) {
+			if ( class_exists( 'Dotenv\Dotenv' ) ) {
 			    $dotenv = new Dotenv( __DIR__ . '/../../../' );
 			    $dotenv->load();
 		    }
