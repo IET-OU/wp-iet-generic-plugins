@@ -45,9 +45,9 @@ class Lorem_Filter_Plugin {
 		if ( ! $content && class_exists( 'SoderlindLorem' ) ) {
 
 			if ( class_exists( 'Dotenv\Dotenv' ) ) {
-			    $dotenv = new Dotenv( __DIR__ . '/../../../' );
-			    $dotenv->load();
-		    }
+				$dotenv = new Dotenv( __DIR__ . '/../../../' );
+				$dotenv->load();
+			}
 
 			$soder_plugin = new SoderlindLorem();
 			$lorem = $soder_plugin->lorem( [

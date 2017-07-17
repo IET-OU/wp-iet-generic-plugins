@@ -10,15 +10,14 @@ php:
   #- hhvm
 
 git:
-  depth: 6
+  depth: 8
 
 env:
   - TRAVIS_NODE_VERSION="4"
 
 before_install:
-  - composer --version
-  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-  - node --version
+  - nvm install v4.4
+  - npm install npm -g
   - npm --version
 
 install:
@@ -26,14 +25,14 @@ install:
   - composer npm-install
 
 before_script:
-  - composer eslint-config
+  # - composer eslint-config
 
 script:
   - composer test
   # npm WARN engine eslint@3.12.1: wanted: {"node":">=4"} (current: {"node":"0.10.36","npm":"1.4.28"})
-  - composer eslint
 
 after_script:
-  - composer eslint-echo
+  - composer semi
+  - composer cs
 
 #End.
