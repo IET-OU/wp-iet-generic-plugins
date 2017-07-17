@@ -10,9 +10,23 @@ A collection of generic WordPress plugins, including:
 * Simple Menu
 * IET attribution
 * IET custom style
+* _... And others!_
 
+## Install .. test
 
-### [Usage and how-to guide](docs/USAGE.md)
+```sh
+composer install && composer npm-install
+composer test
+```
+
+Work-in-progress:
+
+```sh
+composer cs && composer semi
+composer fix
+```
+
+## [Usage and how-to guide](docs/USAGE.md)
 
 ---
 
@@ -28,7 +42,7 @@ Developed for the [JuxtaLearn][] and [LACE][] projects. Used in:
 ---
 License: [GNU GPL 2 onwards][gpl]
 
-© 2015 The Open University. ([Institute of Educational Technology][])
+© 2014-2017 The Open University. ([Institute of Educational Technology][])
 
 
 [gpl]: https://gnu.org/licenses/gpl-2.0.html "GPL-2.0+"
