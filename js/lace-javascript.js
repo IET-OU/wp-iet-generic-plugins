@@ -71,6 +71,7 @@ window.jQuery(function ($) {
   /* CleanPrint customizations [Bug: #9]
   */
   C && console.log('CleanPrint?', has_cleanprint);
+
   if (has_cleanprint) {
 
   if ($inject_cleanprint.length) {
@@ -107,8 +108,7 @@ window.jQuery(function ($) {
 
     /* CleanPrint - keyboard accessibility hacks (incomplete!) (uses WAI-ARIA)
     */
-    $cleanprint_bn_wrap.find('a, button').on('click', function (ev) {
-
+    $cleanprint_bn_wrap.find('a, button').on('click', function ( /* ev */ ) {
       var $cleanprint_return = $('.lace-cleanprint-buttons a, .lace-cleanprint-buttons button').first();
 
       whenCall(function () {
@@ -158,5 +158,5 @@ window.jQuery(function ($) {
     }, interval || 500); // Milliseconds.
   }
 
-  C && console.log('lace-javascript.js');
+  C && W.console.log('lace-javascript.js');
 });

@@ -1,3 +1,8 @@
+#
+# Travis-CI + PHP + Node.JS testing.
+#
+# http://austinpray.com/ops/2015/09/20/change-travis-node-version.html
+#
 language: php
 php:
   - 7.0
@@ -7,13 +12,28 @@ php:
 git:
   depth: 6
 
+env:
+  - TRAVIS_NODE_VERSION="4"
+
 before_install:
   - composer --version
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - node --version
+  - npm --version
 
 install:
   - composer install
+  - composer npm-install
+
+before_script:
+  - composer eslint-config
 
 script:
   - composer test
+  # npm WARN engine eslint@3.12.1: wanted: {"node":">=4"} (current: {"node":"0.10.36","npm":"1.4.28"})
+  - composer eslint
+
+after_script:
+  - composer eslint-echo
 
 #End.
