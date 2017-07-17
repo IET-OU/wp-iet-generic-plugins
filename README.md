@@ -1,4 +1,5 @@
 [![Build status: Travis-CI][travis-icon]][travis-ci]
+[![js-semistandard-style][semi-icon]][semi]
 
 # IET-OU / wp-iet-generic-plugins
 
@@ -55,5 +56,8 @@ License: [GNU GPL 2 onwards][gpl]
 [github]: https://github.com/IET-OU/wp-iet-generic-plugins
 [travis-ci]: https://travis-ci.org/IET-OU/wp-iet-generic-plugins "Build status – Travis-CI"
 [travis-icon]: https://travis-ci.org/IET-OU/wp-iet-generic-plugins.svg
+[semi]: https://github.com/Flet/semistandard
+[semi-icon]: https://img.shields.io/badge/code_style-semistandard-brightgreen.svg?style_x=flat-square
+  "Javascript coding style — 'semistandard'"
 
-[End]: //end
+[End]: //
