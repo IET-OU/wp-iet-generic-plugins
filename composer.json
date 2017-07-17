@@ -33,12 +33,12 @@
       "parallel-lint --exclude vendor .",
       "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs/",
       "# phpcs --standard=WordPress-Core *-*.php",
-      "# phpcs --standard=WordPress-Core *_menu.php",
+      "# phpcs --standard=WordPress-Core simple_*.php",
       "# phpcs --standard=vendor/wp-coding-standards/wpcs/WordPress-Core/ruleset.xml *_menu.php"
     ],
     "semi": "node_modules/.bin/semistandard",
     "cs":"phpcs --standard=WordPress-Core *_menu.php *-*.php",
-    "fix": "phpcbf --standard=WordPress-Core *-*.php"
+    "fix": "phpcbf --standard=WordPress-Core *_menu.php"
     ,
     "eslint-config": [
       "echo '---\n  extends: eslint:recommended\n  globals:\n    window: false\n' > .eslintrc.yaml",

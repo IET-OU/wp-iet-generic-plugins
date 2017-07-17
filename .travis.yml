@@ -32,6 +32,7 @@ script:
   # npm WARN engine eslint@3.12.1: wanted: {"node":">=4"} (current: {"node":"0.10.36","npm":"1.4.28"})
 
 after_script:
+  # Work-in-progress!
   - composer semi
   - composer cs
 
