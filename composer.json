@@ -51,6 +51,9 @@
     ]
   },
   "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    },
 
     "//": [
       "https://dl.dropbox.com/u/3203144/lace/lace-composer-proposal-2015.md",
