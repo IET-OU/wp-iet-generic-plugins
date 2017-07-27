@@ -37,6 +37,11 @@ class Simple_Menu {
 			'top_link' => true,
 		], $attr ) );
 
+		// fix: vars are pulled in as strings but are queried as if they are booleans, so convert here
+		$content = $content == "true" ? true : false;
+		$comments = $comments == "true" ? true : false;
+		$top_link = $top_link == "true" ? true : false;
+
 		$menu_obj = wp_get_nav_menu_object( $menu ); //232 ); //'Help' ); //'Main' );
 		$menu_items = wp_get_nav_menu_items( $menu_obj );
 
@@ -99,7 +104,7 @@ class Simple_Menu {
 	  data-post='<?php self::post_json( $it ) ?>' data-uri='<?php echo $it->url ?>'>
 	  <div class="col-md-9 guide-inner">
 
-	  <h2 class="item-title"><?php echo $it->title ?></h3>
+	  <h2 class="item-title"><?php echo $it->title ?></h2><?php // fix: closing tag was h3, corrected to h2 ?>
 		<?php echo apply_filters( 'the_content', get_post_field( 'post_content', $it->object_id ) ) ?>
 		<?php self::display_comments( $it->object_id, $show_comments ) ?>
 	</div>
