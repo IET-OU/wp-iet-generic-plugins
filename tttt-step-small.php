@@ -24,16 +24,16 @@ class TTTT_Small_Step_Plugin {
 
 	public function shortcode_tttt_small( $attrs = [], $content = null ) {
 		$inp = (object) shortcode_atts( [
-			'step'  => null,
-			'page_link'  => null,
+			'step' => null,
+			'page_link' => null,
 		], $attrs );
 
-		$a1 = $inp->page_link == null ? '' : '<a href="/' . $inp->page_link . '/">';
-		$a2 = $inp->page_link == null ? '' : '</a>';
+		$link_open = $inp->page_link ? '<a href="/' . $inp->page_link . '/">' : '';
+		$link_close = $inp->page_link ? '</a>' : '';
 
 		$image_url = get_stylesheet_directory_uri() . sprintf( self::IMAGE_URL, $inp->step );
 
-		return $a1 . sprintf( self::TPL, $inp->step, $image_url, $inp->step, $inp->step, $content ) . $a2;
+		return $link_open . sprintf( self::TPL, $inp->step, $image_url, $inp->step, $inp->step, $content ) . $link_close;
 	}
 
 }
