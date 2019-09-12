@@ -15,7 +15,7 @@ License: GPL2+
 *
 * define( 'IET_ATTRIBUTION_DEVELOPED_BY_HTML', '[ © %s <a href>PROJECT</a> - custom HTML ]' );
 * define( 'IET_ATTRIBUTION_AVATAR_ID', 'name@example' );
-* define( 'IET_ATTRIBUTION_URL', 'http://example.org' );
+* define( 'IET_ATTRIBUTION_URL', 'https://example.org' );
 * define( 'IET_ATTRIBUTION_NAME', '[ Example Organization Name ]' );
 * define( 'IET_ATTRIBUTION_CSS', '[ custom CSS styles ]' );
 * define( 'IET_ATTRIBUTION_FORK_ME_URL', 'https://github.com/example/project' );
@@ -29,7 +29,6 @@ License: GPL2+
 */
 
 define( 'IET_ATTRIBUTION_REGISTER_FILE', __FILE__ );  #preg_replace( '@^.*wp-content\/plugins@', '', __FILE__ ));
-
 
 
 class IET_Attribution_Plugin {
@@ -107,10 +106,10 @@ class IET_Attribution_Plugin {
 
   /** HTML+RDFa for a Creative Commons license.
   * @link https://creativecommons.org/choose/
-  * @link http://embed.open.ac.uk/oembed?url=cc:by/4.0/88x31&title=[MY+WORK]
+  * @link https://embed.open.ac.uk/oembed?url=cc:by/4.0/88x31&title=[MY+WORK]
   */
   protected function print_license_html() {
-    $license_compact_url = get_option( 'iet_attribution_license_curie', NULL );  //'cc:by/4.0/88x31'
+    $license_compact_url = get_option( 'iet_attribution_license_curie', NULL );  // 'cc:by/4.0/88x31'
     if ( ! $license_compact_url ) {
       return;
     }
@@ -133,11 +132,11 @@ class IET_Attribution_Plugin {
 
   <div id="iet-license" class="iet-attribution-part">
     <a rel="license"
-      href="http://creativecommons.org/licenses/<?php echo "$license/$version" ?>/"><img
+      href="https://creativecommons.org/licenses/<?php echo "$license/$version" ?>/"><img
       alt="Creative Commons License" style="border-width:0"
       src="https://i.creativecommons.org/l/<?php echo "$license/$version/$size" ?>.png" /></a>
     <br />This work is licensed under a <a rel="license"
-      href="http://creativecommons.org/licenses/<?php echo "$license/$version" ?>/"
+      href="https://creativecommons.org/licenses/<?php echo "$license/$version" ?>/"
       ><?php echo $label ?></a>.
   </div>
 
@@ -152,9 +151,9 @@ class IET_Attribution_Plugin {
     <div id="iet-attribution" class="iet-attribution-part">
     <?php $this->print_option(
       'iet_attribution_developed_by_html',
-      'Based on free/open source code developed for <a href=
-      "http://oerresearchhub.org/">OER Research Hub</a> at the
-      <div><a href="http://iet.open.ac.uk/">Institute of Educational
+      'Based on free/open source code developed for <i data-href=
+      "http://oerresearchhub.org/">OER Research Hub</i> at the
+      <div><a href="https://iet.open.ac.uk/">Institute of Educational
       Technology</a> at The Open University<span>, UK</span></div>'
     ) ?>
     <?php $this->svg_load_javascript() ?>
@@ -164,30 +163,30 @@ class IET_Attribution_Plugin {
   }
 
   /** Embed SVG logo via Javascript.
-  * @link http://stackoverflow.com/questions/14068031/embedding-external-svg-in-html-for-javascript-manipulation#14070928
+  * @link https://stackoverflow.com/questions/14068031/embedding-external-svg-in-html-for-javascript-manipulation#14070928
   */
   protected function svg_load_javascript( $url = null, $id = 'iet-attribution-logo' ) {
     $url = $url ? $url : $this->get_avatar_url( 'images/iet-ou-logo-400px.svg' ); #plugins_url('images/..svg', __FILE__ );
     $name = $this->get_option( 'iet_attribution_name', 'Institute of Educational Technology' );
      ?>
   <a id="<?php echo $id ?>"
-    href="<?php $this->print_option( 'iet_attribution_url', 'http://iet.open.ac.uk/' ) ?>"
+    href="<?php $this->print_option( 'iet_attribution_url', 'https://iet.open.ac.uk/' ) ?>"
     title="<?php echo $name ?>" aria-label="<?php echo $name ?>" ></a>
   <script>
-  (function (url, id) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, false);
+  (function (W, url, id) {
+    var xhr = new W.XMLHttpRequest();
+    xhr.open('GET', url, false);
 
     if (!xhr.overrideMimeType) { return; } // MSIE 7/8 returns here..gracefully!
 
         // Following line is just to be on the safe side;
         // not needed if your server delivers SVG with correct MIME type
-        xhr.overrideMimeType("image/svg+xml");
-        xhr.send("");
+        xhr.overrideMimeType('image/svg+xml');
+        xhr.send('');
         document.getElementById(id)
                 .appendChild(xhr.responseXML.documentElement);
 
-  })("<?php echo $url ?>", "<?php echo $id ?>");
+  })(window, '<?php echo $url ?>', '<?php echo $id ?>');
   </script>
 <?php
   }
@@ -250,9 +249,8 @@ class IET_Attribution_Plugin {
       return $matches[ 1 ];
     }
   }
-
 }
+
 $iet_attribution = new IET_Attribution_Plugin();
 
-
-#End.
+// End.

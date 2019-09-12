@@ -41,6 +41,9 @@ Developed for the [JuxtaLearn][] and [LACE][] projects. Used in:
 * LACE Evidence Hub, http://evidence.laceproject.eu
 * Tricky Topics Guide, http://tricky-topics-guide.ac.uk
 
+## GDPR
+
+Details of GDPR / privacy fixes can be found in [Bug #56][].
 
 ---
 License: [GNU GPL 2 onwards][gpl]
@@ -54,7 +57,7 @@ License: [GNU GPL 2 onwards][gpl]
 [@IET-OU/oer-evidence-hub-org]: https://github.com/IET-OU/oer-evidence-hub-org
 [JuxtaLearn]: http://juxtalearn.eu/
 [LACE]: http://www.laceproject.eu/ "Learning Analytics Community Exchange"
-[Institute of Educational Technology]: http://iet.open.ac.uk/
+[Institute of Educational Technology]: https://iet.open.ac.uk/
 [github]: https://github.com/IET-OU/wp-iet-generic-plugins
 [bitbucket]: https://bitbucket.org/nfreear/wp-iet-generic-plugins
 [travis-ci]: https://travis-ci.org/IET-OU/wp-iet-generic-plugins "Build status – Travis-CI"
@@ -62,5 +65,6 @@ License: [GNU GPL 2 onwards][gpl]
 [semi]: https://github.com/Flet/semistandard
 [semi-icon]: https://img.shields.io/badge/code_style-semistandard-brightgreen.svg?style_x=flat-square
   "Javascript coding style — 'semistandard'"
+[bug #56]: https://github.com/IET-OU/oer-evidence-hub-org/issues/56 "GDPR/privacy"
 
 [End]: //
